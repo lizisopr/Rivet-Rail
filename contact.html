@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="hotel-apartment-accommodation-svgrepo-com (1).ico">
+    <title>RIVET & RAIL</title>
+
+    <meta name="description"
+    content="Escape to Rivet & Rail, the premier luxury boutique hotel in Metropolis, CA. Experience timeless comfort, refined dining, and bespoke service in your private urban sanctuary. Book your exceptional stay today.">
+
+    <meta name="keywords" content="Luxury Boutique Hotel Metropolis CA Urban Sanctuary Hotel Metropolis  Rivet and Rail Hotel ">
+    <meta name="keywords" content="luxury hotel hotel urban style hotel">
+
+   
+    <meta name="keywords" content="spa & massage dinner parking car services movie night gym">
+
+    <meta name="keywords" content="tel:+15551234567 mailto:reserve@rivetrail.com">
+
+    <meta name="keywords" content="RIVET & RAIL">
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Akaya+Kanadaka&family=Alegreya:ital,wght@0,400..900;1,400..900&family=BBH+Sans+Hegarty&family=Boldonse&family=Delius&family=Dorsa&family=Eagle+Lake&family=Ephesis&family=Faustina:ital,wght@0,300..800;1,300..800&family=Felipa&family=Fleur+De+Leah&family=Forum&family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans+Flex:opsz,wght@6..144,600&family=Handlee&family=Kings&family=Lavishly+Yours&family=New+Rocker&family=Outfit:wght@100..900&family=Passion+One:wght@400;700;900&family=Plaster&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rosarivo:ital@0;1&family=Rouge+Script&family=Space+Mono:wght@400;700&family=Special+Elite&family=Stack+Sans+Text:wght@200..700&family=Updock&family=Vast+Shadow&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <header>
+    
+     <a href="logo">
+     <span class="logo">RIVET & RAIL</span>
+        </a>
+
+       <nav>
+       <a href="http:/menu.html/">MENU</a>
+       <a href="index.html #about">ABOUT</a>
+       <a href="http:/rooms.html/">ROOMS</a>
+       <a href="http:/#index.html/">HOME</a>
+        </nav>
+ 
+    </header>
+
+   <section>
+     <div class="backk">
+        <div class="reservation-page">
+        <div class="reservation-form-container">
+            <h1 class="form-title">Book Your Stay</h1>
+            <p class="form-subtitle">Secure your room with us today. We have 30 rooms available.</p>
+            
+            <form action="/submit-reservation" method="POST"> 
+                
+                <div class="form-group-row">
+                    <div class="form-field">
+                        <label for="check-in">Check-in Date *</label>
+                        <input type="date" id="check-in" name="check-in" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="check-out">Check-out Date *</label>
+                        <input type="date" id="check-out" name="check-out" required>
+                    </div>
+                </div>
+
+                <div class="form-group-row">
+                    <div class="form-field">
+                        <label for="guests">Number of Guests *</label>
+                        <input type="number" id="guests" name="guests" min="1" max="6" value="1" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="rooms">Number of Rooms *</label>
+                        <input type="number" id="rooms" name="rooms" min="1" max="10" value="1" required>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label for="room-type">Room Type *</label>
+                    <select id="room-type" name="room-type" required>
+                        <option value="" disabled selected>Select a Room Type</option>
+                        <option value="standard-single">Standard Single (1-2 Guests)</option>
+                        <option value="deluxe-double">Deluxe Double (1-2 Guests)</option>
+                        <option value="family-suite">Family Suite (3-6 Guests)</option>
+                        <option value="executive-suite">Executive Suite (Up to 4 Guests)</option>
+                    </select>
+                </div>
+                
+                <div class="form-field">
+                    <label for="full-name">Full Name *</label>
+                    <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group-row">
+                    <div class="form-field">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="email@example.com" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label for="requests">Special Requests / Notes</label>
+                    <textarea id="requests" name="requests" rows="4" placeholder="e.g., Early check-in, Feather-free pillows..."></textarea>
+                </div>
+                
+                <div class="form-field form-submit">
+                    <button type="submit">Confirm Reservation</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+     </div>
+    </section>
+</body>
+</html>
