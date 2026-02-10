@@ -28,36 +28,32 @@
 <body>
         <header>
     
-     <a href="index.html">
+   <a href="index.html">
      <span class="logo">RIVET&RAIL</span>
         </a>
 
-       <nav>
+       <nav class="somee">
        <a href="menu.html">MENU</a>
        <a href="index.html#about">ABOUT</a>
        <a href="rooms.html">ROOMS</a>
        <a href="index.html">HOME</a>
+       <a href="fav.html">FAVORITES</a>
         </nav>
 
-<div class="mobile-nav-container">
-  <input type="checkbox" id="burger-toggle">
+<input id="burger-checkbox" type="checkbox" />
+<label class="burger" for="burger-checkbox">
+  <span></span>
+  <span></span>
+  <span></span>
+</label>
 
-  <label class="burger" for="burger-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
-  </label>
-
-  <nav class="mobile-menu">
-    <ul>
-      <li><a href="index.html#about"><i class="icon-user"></i>- About</a></li>
-      <li><a href="index.html"><i class="icon-gear"></i>- Home</a></li>
-      <li><a href="menu.html"><i class="icon-phone"></i>- Menu</a></li>
-      <li><a href="rooms.html"><i class="icon-phone"></i>- Rooms</a></li>
-    </ul>
-  </nav>
-</div>
-    
+<nav class="navmenu">
+  <a href="menu.html">MENU</a>
+  <a href="index.html#about">ABOUT</a>
+  <a href="index.html">HOME</a>
+  <a href="contact.html">CONTACT</a>
+  <a href="fav.html">FAVORITES</a>
+</nav>
     </header>
 
    <section>
@@ -188,6 +184,7 @@
                 <li><a href="menu.html">Menu</a></li>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#about">About</a></li>
+                <li><a href="fav.html">Favorites</a></li>
             </ul>
         </div>
 
@@ -202,5 +199,7 @@
     </div>
          
      </footer>
+     <script src="burger.js"></script>
+     <script src="app.js"></script>
 </body>
 </html>

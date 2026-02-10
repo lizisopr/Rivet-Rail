@@ -36,7 +36,7 @@ header{
     background-color: transparent;
     position: absolute;
     z-index: 1000;
-    width: 80%;
+    width: 100%;
              }
 
 header .logo{
@@ -48,7 +48,7 @@ header .logo{
   }
 
 nav, nav a{
-    gap: 30%;
+    gap: 50px;
     display: flex;
     color: var(--color-accent);
     font-weight: 600;
@@ -57,93 +57,78 @@ nav, nav a{
     text-decoration: none;
 }
 
-nav a:hover{
-    color: var(--color-text-dark);
-    }
-
- #burger-toggle {
-  display: none; 
+.somee a{
+  position: relative;
+  color: #656d4a;
+  text-decoration: none;
+  padding: 10px 15px;
 }
 
-.mobile-nav-container {
-  position: relative;
-  display: none; 
+.somee a::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #a57878;
+  transition: 0.3s ease;
+  transform: translateX(-50%);
 }
 
-.burger {
-  position: relative;
-  width: 30px;
-  height: 20px;
-  background: transparent;
-  cursor: pointer;
-  display: block;
-  z-index: 101; 
-  }
+.somee a:hover::after{
+  width: 100%;
+}
+
+
+.navmenu a{
+  color: black;
+  transition: 0.3s ease;
+}
+
+.navmenu a:hover{
+  color: #656d4a;
+  transform: translateY(-3px);
+  text-shadow: 0 0 10px #a57878;
+}
+
+ .burger { display: none; }
+ #burger-checkbox { display: none; }
+
+.navmenu {
+  display: none; 
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 50px;
+  background: #333;
+  padding: 20px;
+  border: 1px solid black;
+  z-index: 999;
+}
+
+.navmenu.active {
+  display: flex;
+}
 
 .burger span {
   display: block;
-  position: absolute;
-  height: 4px;
-  width: 100%;
-  background: var(--color-accent); 
-  border-radius: 9px;
-  left: 0;
-  transition: .25s ease-in-out;
+  width: 25px;
+  left: auto;
+  height: 3px;
+  background: #333;
+  margin: 5px 0;
+  transition: 0.3s;
 }
 
-.burger span:nth-of-type(1) { top: 0px; transform-origin: left center; }
-.burger span:nth-of-type(2) { top: 50%; transform: translateY(-50%); transform-origin: left center; }
-.burger span:nth-of-type(3) { top: 100%; transform: translateY(-100%); transform-origin: left center; }
-
-#burger-toggle:checked + .burger span:nth-of-type(1) {
-  transform: rotate(45deg);
-  top: -2px;
-  left: 5px;
+#burger-checkbox:checked + .burger span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
 }
-
-#burger-toggle:checked + .burger span:nth-of-type(2) {
-  width: 0%;
+#burger-checkbox:checked + .burger span:nth-child(2) {
   opacity: 0;
 }
-
-#burger-toggle:checked + .burger span:nth-of-type(3) {
-  transform: rotate(-45deg);
-  top: 23px;
-  left: 5px;
-}
-
-.mobile-menu {
-  display: none; 
-  position: absolute;
-  right: 0px;
-  top: 45px;
-  background: transparent;
-  width: 200px;
-  padding: 0;
-  z-index: 100;
-  }
-
-.mobile-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.mobile-menu ul li a {
-  color: #a57878;
-  font-size: 15px;
-  padding: 15px 20px;
-  font-family: "Passion One", sans-serif;
-  display: block;
-  }
-
-.mobile-menu ul li a i {
-  color: var(--color-text-dark);
-  padding-right: 13px;
-}
-
-#burger-toggle:checked ~ .mobile-menu {
-  display: block;
+#burger-checkbox:checked + .burger span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* HEADER */
@@ -709,8 +694,7 @@ button[type="submit"]:active {
 
 /* rooms */
 .bgrm {
- background-color: var(--color-dark);
- max-height: 300vh;
+ max-height: 350vh;
 }
 
 .title{
@@ -735,7 +719,8 @@ button[type="submit"]:active {
     display: flex;
      }  
  
- .whole {
+
+ .roomscontainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
@@ -743,36 +728,70 @@ button[type="submit"]:active {
     max-width: 1200px;
     padding: 40px 20px;
     margin: 0 auto;
-    
     }
 
- .rom-card{
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    background-color: var(--color-text-light);
-    overflow: hidden;
-    width: 100%;
-    border-radius: 12px;
+ .roomscontainer .rom-card{
+   position: relative; 
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  background-color: var(--color-text-light);
+  overflow: hidden;
+  width: 100%;
+  border-radius: 12px;
    }
 
- .rom-card:hover {
+ .roomscontainer .rom-card:hover {
     transform: translateY(-5px); 
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
-
-.whole img{
+ .roomscontainer img{
     width: 100%; 
     height: 250px; 
     object-fit: cover; 
     display: block;
     }
 
-   .rom-card h3 {
+   .roomscontainer h3 {
     padding: 15px 20px 0;
     font-size: 1.2em;
     font-weight: 700;
     color:black;
-        } 
+        }  
+        
+ .fav-btn svg{
+ width: 24px;
+ fill: #5c677d;
+ filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+  }
+
+ .fav-btn {
+ position: absolute;
+ top: 20px;
+ left: 5px;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+}
+
+.fav-text {
+  margin-right: 8px;
+  background: black;
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.fav-btn:hover .fav-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 
 .restt {
    display: grid;
@@ -802,9 +821,49 @@ button[type="submit"]:active {
         
   .restt button:active {
    transform: translateY(0);
-        }
-         
+        }   
 
+
+
+  
+
+.fav-container{
+    color: black;
+    line-height: 1.6;
+    min-height: 500px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.fav-container .rom-card{
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    background-color: var(--color-text-light);
+    overflow: hidden;
+    width: 100%;
+    border-radius: 12px;
+   }
+
+   .fav-container h3 {
+  
+    padding: 15px 20px 0;
+    font-size: 1.2em;
+    font-weight: 700;
+    color:black;
+        }
+
+ .fav-container img{
+    width: 100%; 
+    height: 250px; 
+    object-fit: cover; 
+    display: block;
+    }
+
+ .fav-container .rom-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
 
         /* menu */
 
@@ -967,11 +1026,11 @@ padding: 40px 20px;
  
 @media screen and (max-width:600px) { 
 
-  .mobile-nav-container {
+  .burger{
     display: block;
   }
 
-  nav a{
+  nav{
     display: none;
   }
 
@@ -1008,8 +1067,8 @@ padding: 40px 20px;
                  }
 
   .more {
-    flex-direction: column;
     text-align: center;
+    flex-direction: column;
        }
 
   .more img {
@@ -1018,15 +1077,15 @@ padding: 40px 20px;
             
             
   .more p {
-    width: 60%; 
-    font-size: 1.1em; 
-    
+    text-align: center;
+    font-size: 1em; 
+    width: 50%;
     }
             
           
   .bgggg h3 {
-   width: 70%;
    font-size: 1.3em;
+   text-align: center;
    } 
  
  .reviews {
@@ -1078,8 +1137,6 @@ padding: 40px 20px;
 
   /* rooms  */
 .bgrm {
- background-color: var(--color-dark);
- min-height: 600vh;
  padding-top: 100px;
 }
 
@@ -1087,31 +1144,33 @@ padding: 40px 20px;
    font-size: 1.5em;
    line-height: 1.2;
    padding: 0 15px;
-     }
-
+     } 
+     
+   
  .title p{
     font-size: 0.9em;
     padding: 0 15px;
- }    
+    text-align: center;
+ }  
 
-  .whole{
+  .roomscontainer{
     display: grid;
     gap: 30px;
     padding: 20px;
     grid-template-columns: 1fr;
      }
 
- .room-card{
+ .roomscontainer .room-card{
     width: 90%;
     margin: 0 auto;
     margin-bottom: 15%;
   }
 
-  .room-card h3{ 
+   .roomscontainer h3{ 
     font-size: 0.85em;
      }
 
- .room-card p{
+ .roomscontainer p{
     font-size: 1em;
     line-height: 1.4;
     text-align: left;
@@ -1121,6 +1180,30 @@ padding: 40px 20px;
  footer {
     padding: 20px 10px;
     text-align: center;
+  }
+
+   .fav-container{
+    min-height: 1200px;
+    display: grid;
+    padding: 20px;
+    grid-template-columns: 1fr;
+    text-align: center;
+     }
+
+ .fav-container .room-card{
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 15%;
+  }
+
+   .fav-container h3{ 
+    font-size: 0.85em;
+     }
+
+ .fav-container p{
+    font-size: 1em;
+    line-height: 1.4;
+    text-align: left;
   }
 
   /* menu */
