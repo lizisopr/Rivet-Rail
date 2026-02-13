@@ -29,7 +29,8 @@ function generate(arr) {
           <p><strong>Size:</strong> ${room.size}m²</p>
           <p><strong>Price:</strong> $${room.price}</p>
           <button onclick="location.href='contact.html'">RESERVE THIS ROOM</button>
-        </div>
+       <button class="del-btn" onclick="deleteRoom(${room.id})"> Delete</button>
+          </div>
       </div>`;
     });
 }
@@ -38,7 +39,7 @@ function generate(arr) {
 function goToFavs(id) {
   let favs = JSON.parse(sessionStorage.getItem("favs")) || [];
 
-  id = Number(id); // ერთიანი ტიპი
+  id = Number(id); 
 
   if (!favs.includes(id)) {
     favs.push(id);
@@ -52,4 +53,42 @@ function goToFavs(id) {
 
 
 document.addEventListener("DOMContentLoaded", hotelrooms);
+
+
+async function addRoom() {
+  const title = document.getElementById("title").value;
+  const price = document.getElementById("price").value;
+  const size = document.getElementById("size").value;
+  const image = document.getElementById("image").value;
+
+  if (!title || !price || !size || !image) {
+    alert("Fill all fields!");
+    return;
+  }
+
+  await fetch(`${API_URL}rooms`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title, price, size, image })
+  });
+
+  hotelrooms(); 
+}
+
+async function deleteRoom(id){
+  await fetch(`${API_URL}rooms/${id}`, { method:"DELETE" });
+  hotelrooms();
+}
+
+
+let isAdmin = false;
+
+function toggleAdmin(){
+  isAdmin = !isAdmin;
+  document.body.classList.toggle("admin", isAdmin);
+  document.querySelector(".admin-toggle").classList.toggle("active", isAdmin);
+}
+
+
+
 

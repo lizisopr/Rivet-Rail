@@ -865,6 +865,71 @@ button[type="submit"]:active {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
+.admin-panel {
+  margin: 60px auto;
+  max-width: 700px;
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.admin-panel input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid white;
+}
+
+.admin-panel button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.admin .del-btn,
+.admin .admin-panel {
+  display: block;
+}
+
+.del-btn,
+.admin-panel {
+  display: none;
+}
+
+.admin-toggle{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg,#111,#333);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  transition: all .3s ease;
+  z-index: 9999;
+}
+
+.admin-toggle:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.5);
+}
+
+.admin-toggle.active{
+  background: linear-gradient(135deg,#7a8450,#3f4528);
+}
+
+
         /* menu */
 
  .colllll{
@@ -1231,5 +1296,4 @@ padding: 40px 20px;
     text-align: center;
 }
 
- 
 }
