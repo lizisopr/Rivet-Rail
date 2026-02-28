@@ -835,7 +835,7 @@ button[type="submit"]:active {
 
  .roomscontainer {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 5%;
     max-width: 1200px;
@@ -1032,7 +1032,6 @@ button {
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 3px;
   cursor: pointer;
   transition: all 0.4s ease;
   position: relative;
@@ -1512,6 +1511,15 @@ button {
   font-weight: 500;
   display: block;
   font-family: var(--font-logo);
+}
+
+@media screen and (max-width: 1024px) {
+    .roomscontainer, .menu-grid {
+        grid-template-columns: 1fr 1fr; 
+    }
+    .drinks-content {
+        width: 90%; 
+    }
 }
  
 @media screen and (max-width:600px) { 
