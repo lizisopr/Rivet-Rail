@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<section class="admin-body">
+<div class="login-wrapper">
+  <div class="login-box">
+    <h2>Admin Login</h2>
+    <input type="password" id="adminPassword" placeholder="Enter password">
+    <button id="loginBtn">Login</button>
+    <p id="errorMsg"></p>
+  </div>
+</div>
+
+<section id="adminPanel" class="hidden">
+  <div class="dashboard">
+    <div class="dashboard-header">
+      <h2>Guests List</h2>
+      <button id="logoutBtn">Logout</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Room</th>
+          <th>Days</th>
+          <th>Actions</th>
+        </tr>
+     <div class="add-form">
+  <input type="text" id="newName" placeholder="Name">
+  <input type="text" id="newRoom" placeholder="Room">
+  <input type="number" id="newDays" placeholder="Days">
+  <button id="addBtn">Add</button>
+</div>   
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+</section>
+
+<script src="admin.js"></script>
+</body>
+</html>
