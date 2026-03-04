@@ -55,118 +55,71 @@
   <a href="fav.html">FAVORITES</a>
 </nav>
     </header>
+<section class="booking-section">
+  <div class="booking-bg"></div>
 
-   <section>
-    <div class="backg">
-     <div class="backk">
-        <div class="reservation-page">
-        <div class="reservation-form-container">
-            <h1 class="form-title">Book Your Stay</h1>
-            <p class="form-subtitle">Secure your room with us today. We have 9 rooms available.</p>
-            
-            <form action="/submit-reservation" method="POST"> 
-                
-                <div class="form-group-row">
-                    <div class="form-field">
-                        <label for="check-in">Check-in Date *</label>
-                        <input type="date" id="check-in" name="check-in" required>
-                    </div>
-                    <div class="form-field">
-                        <label for="check-out">Check-out Date *</label>
-                        <input type="date" id="check-out" name="check-out" required>
-                    </div>
-                </div>
+  <div class="booking-card">
+    <h2>Book Your Stay</h2>
+    <p>Select your room and dates</p>
 
-                <div class="form-group-row">
-                    <div class="form-field">
-                        <label for="guests">Number of Guests *</label>
-                        <input type="number" id="guests" name="guests" min="1" max="6" value="1" required>
-                    </div>
-                    <div class="form-field">
-                        <label for="rooms">Number of Rooms *</label>
-                        <input type="number" id="rooms" name="rooms" min="1" max="10" value="1" required>
-                    </div>
-                </div>
+    <form class="booking-form">
 
-                <div class="form-field">
-                    <label for="room-type">Room Type *</label>
-                    <select id="room-type" name="room-type" required>
-                        <option value="" disabled selected>Select a Room Type</option>
-                        <option value="standard-single">Standard Single (1-2 Guests)</option>
-                        <option value="deluxe-double">Deluxe Double (1-2 Guests)</option>
-                        <option value="family-suite">Family Suite (3-6 Guests)</option>
-                        <option value="executive-suite">Executive Suite (Up to 4 Guests)</option>
-                    </select>
-                </div>
-                
-                <div class="form-field">
-                    <label for="full-name">Full Name *</label>
-                    <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
-                </div>
+      <div class="input-group">
+        <select>
+          <option>Semi-Double Room — $199</option>
+          <option>Hollywood Twin Room — $219</option>
+          <option>Superior Double Room — $229</option>
+          <option>Rugged Twin — $319</option>
+          <option>Suite — $799</option>
+          <option>Atelier Suite — $749</option>
+          <option>Semi Double Room — $349</option>
+          <option>Deluxe Executive Twin — $400</option>
+          <option>Honeymoon Jacuzzi Suite — $830</option>
+        </select>
+      </div>
 
-                <div class="form-group-row">
-                    <div class="form-field">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" placeholder="email@example.com" required>
-                    </div>
-                    <div class="form-field">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
-                    </div>
-                </div>
-
-                <div class="form-field">
-                    <label for="requests">Special Requests / Notes</label>
-                    <textarea id="requests" name="requests" rows="4" placeholder="e.g., Early check-in, Feather-free pillows..."></textarea>
-                </div>
-                
-                <div class="form-field form-submit">
-                    <button type="submit">Confirm Reservation</button>
-                </div>
-
-            </form>
+      <div class="date-group">
+        <div class="input-group">
+          <input type="date" required>
         </div>
-    </div>
- </div>
-</div>
-    
-    </section>
+        <div class="input-group">
+          <input type="date" required>
+        </div>
+      </div>
 
-    <section class="soccial-cont">
-      <div class="social-container">
-        
-        <a href="#" class="social-card instagram">
-            <div class="icon-box">
-                <i class="fab fa-instagram"></i>
-            </div>
-            <div class="social-info">
-                <h3>Instagram</h3>
-                <p>@RivetAndRailOfficial</p>
-            </div>
-        </a>
+      <div class="input-group">
+        <input type="number" min="1" placeholder="Guests" required>
+      </div>
 
-        <a href="#" class="social-card facebook">
-            <div class="icon-box">
-                <i class="fab fa-facebook-f"></i>
-            </div>
-            <div class="social-info">
-                <h3>Facebook</h3>
-                <p>Rivet & Rail Boutique</p>
-            </div>
-        </a>
+      <button type="submit" class="book-btn">Reserve Now</button>
+    </form>
+  </div>
+</section>
 
-        <a href="#" class="social-card booking">
-            <div class="icon-box">
-                <i class="fa-solid fa-hotel"></i>
-            </div>
-            <div class="social-info">
-                <h3>Booking.com</h3>
-                <p>9.8 "Exceptional" Rating</p>
-            </div>
-        </a>
-    </div>  
-    </section>
- 
+<section class="contact-section">
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+
+    <form class="contact-form">
+      <div class="input-group">
+        <input type="text" required>
+        <label>Full Name</label>
+      </div>
+
+      <div class="input-group">
+        <input type="email" required>
+        <label>Email Address</label>
+      </div>
+
+      <div class="input-group">
+        <textarea required></textarea>
+        <label>Your Message</label>
+      </div>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
      <footer>
        <div class="footercont">
        

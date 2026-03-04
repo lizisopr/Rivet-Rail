@@ -1,4 +1,6 @@
 const API_URL = "https://699f330678dda56d396ca8b7.mockapi.io/menu/menu";
+const searchInput = document.getElementById("searchInput");
+const priceFilter = document.getElementById("priceFilter");
 let editId = null;
 
 const sections = {
@@ -8,8 +10,21 @@ const sections = {
   dessert: document.querySelector("#dessert .items-container")
 };
 
+let allItems = [];
+
+async function loadMenu() {
+  try {
+    const resp = await fetch(API_URL);
+    const data = await resp.json();
+    allItems = data;
+    renderMenu(allItems);
+  } catch (error) {
+    console.error("Load Error:", error);
+  }
+}
+
 function renderRow(item) {
- const validImg = item.image && item.image.startsWith('http') 
+  const validImg = item.image && item.image.startsWith('http') 
                    ? item.image 
                    : 'https://via.placeholder.com/300x200?text=No+Image+Found';
 
@@ -31,51 +46,21 @@ function renderRow(item) {
   `;
 }
 
-async function loadMenu() {
-  try {
-    const resp = await fetch(API_URL);
-    const data = await resp.json();
-
-    Object.values(sections).forEach(sec => { if (sec) sec.innerHTML = ""; });
-
-    data.forEach(item => {
-      const category = item.category?.toLowerCase().trim();
-      if (sections[category]) {
-        sections[category].insertAdjacentHTML('beforeend', renderRow(item));
-      } else {
-        console.warn(`Item ${item.name} has an unknown category: ${category}`);
-      }
-    });
-  } catch (error) {
-    console.error("Load Error:", error);
-  }
-}
-
 window.deletefood = async function(id) {
-  console.log("Delete requested for ID:", id);
-  
   const confirmation = confirm("Are you sure you want to delete this delicious item?");
   if (!confirmation) return;
 
   try {
-    const resp = await fetch(`${API_URL}/${id}`, { 
-      method: "DELETE" 
-    });
-
+    const resp = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
     if (resp.ok) {
-      console.log("Delete successful");
       await loadMenu();
-    } else {
-      console.error("Delete failed on server");
-      alert("Could not delete item. Server error.");
     }
   } catch (error) {
     console.error("Delete Error:", error);
   }
 };
 
-
-async function editfood(id) {
+window.editfood = async function(id) {
   editId = id;
   const modal = document.getElementById("editModal");
 
@@ -85,23 +70,23 @@ async function editfood(id) {
 
     document.getElementById("editName").value = data.name || "";
     document.getElementById("editPrice").value = data.price || "";
-    document.getElementById("editCategory").value = data.category?.toLowerCase() || "breakfast";
+    document.getElementById("editCategory").value = data.category?.toLowerCase().trim() || "breakfast";
     document.getElementById("editDescription").value = data.description || "";
     document.getElementById("editImage").value = data.image || "";
 
-    modal.classList.add("active");
+    modal.classList.add("active"); // CSS handles the display now
   } catch (error) {
     console.error("Edit Load Error:", error);
   }
-}
+};
 
-async function saveEdit() {
+window.saveEdit = async function() {
   if (!editId) return;
   const saveBtn = document.querySelector(".save-btn");
 
   const updatedItem = {
     name: document.getElementById("editName").value.trim(),
-    price: document.getElementById("editPrice").value,
+    price: parseFloat(document.getElementById("editPrice").value),
     category: document.getElementById("editCategory").value,
     description: document.getElementById("editDescription").value.trim(),
     image: document.getElementById("editImage").value.trim()
@@ -119,7 +104,7 @@ async function saveEdit() {
 
     if (resp.ok) {
       closeModal();
-      loadMenu(); 
+      await loadMenu(); 
     }
   } catch (error) {
     console.error("Save Error:", error);
@@ -127,11 +112,46 @@ async function saveEdit() {
     saveBtn.disabled = false;
     saveBtn.innerText = "Save Changes";
   }
-}
+};
 
-function closeModal() {
+window.closeModal = function() {
   document.getElementById("editModal").classList.remove("active");
   editId = null;
+};
+
+function renderMenu(items) {
+  Object.values(sections).forEach(sec => {
+    if (sec) sec.innerHTML = "";
+  });
+
+  items.forEach(item => {
+    const category = item.category?.toLowerCase().trim();
+    if (sections[category]) {
+      sections[category].insertAdjacentHTML("beforeend", renderRow(item));
+    }
+  });
 }
+
+function applyFilters() {
+  const searchValue = searchInput.value.toLowerCase();
+  const priceValue = priceFilter.value;
+
+  const filtered = allItems.filter(item => {
+    const matchesSearch = item.name.toLowerCase().includes(searchValue);
+    const itemPrice = parseFloat(item.price);
+    
+    let priceMatch = true;
+    if (priceValue === "low") priceMatch = itemPrice < 15;
+    if (priceValue === "mid") priceMatch = itemPrice >= 15 && itemPrice <= 25;
+    if (priceValue === "high") priceMatch = itemPrice > 25;
+
+    return matchesSearch && priceMatch;
+  });
+
+  renderMenu(filtered);
+}
+
+searchInput.addEventListener("input", applyFilters);
+priceFilter.addEventListener("change", applyFilters);
 
 loadMenu();

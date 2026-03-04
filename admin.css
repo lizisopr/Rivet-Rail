@@ -2,11 +2,39 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border: none;
+}
+
+input, button{
+  cursor: pointer;
+}
+
+:root {
+--bg-dark: #778da9;
+    --bg-light: #495057;
+    --accent-price: #49111c;
+    --accent-hover: #252422;
+    --text-dark: #0a0908;
+    --text-light: #f2f4f3;
+    --border-subtle: #ccc5b9;
+    --input-bg: #1b263b;
+}
+
+:root {
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);  
+    --shadow-md: 0 10px 30px rgba(255, 255, 255, 0.2); 
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.3); 
+}
+
+:root {
+  --font-logo: "Passion One", sans-serif ;      
+  --font-secondary: "Stack Sans Text", sans-serif;           
 }
 
 body {
-  font-family: "Stack Sans Text", sans-serif;
-  background: linear-gradient(135deg, #353535, #284b63);
+  font-family: var(--font-secondary);
+  background: radial-gradient(circle at top left, var(--input-bg), var(--accent-hover));
+  color: var(--text-light);
   min-height: 100vh;
 }
 
@@ -18,49 +46,62 @@ body {
 }
 
 .login-box {
-  width: 320px;
-  background: #d9d9d9;
-  padding: 40px;
-  border-radius: 18px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  width: 380px;
+  background: rgba(242, 244, 243, 0.95); 
+  padding: 50px 40px;
+  border-radius: 4px; 
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
 }
 
 .login-box h2 {
-  margin-bottom: 20px;
-  color: black;
-}
-
-.login-box input,
-.login-box button {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 14px;
+  color: var(--text-dark);
+  font-weight: 300; 
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
 }
 
 .login-box input {
-  border: 1px solid #ffffff;
-  margin-bottom: 15px;
+  width: 100%;
+  background: transparent;
+  border-bottom: 1px solid var(--border-subtle); 
+  border-radius: 0;
+  margin-bottom: 25px;
+  padding: 10px 0;
+  color: var(--text-dark);
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.login-box input:focus {
+  border-bottom-color: var(--input-bg);
 }
 
 .login-box button {
+  width: 100%;
+  background: var(--text-dark);
+  color: var(--text-light);
   border: none;
-  background: #353535;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.2s;
+  padding: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  margin-top: 10px;
+  transition: 0.4s;
 }
 
 .login-box button:hover {
-  background: #284b63;
+  background: var(--accent-price);
+  letter-spacing: 4px;
 }
 
 #errorMsg {
-  color: darkred;
+  color: var(--accent-price);
   margin-top: 10px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .hidden {
@@ -72,12 +113,13 @@ body {
 }
 
 .dashboard {
-  max-width: 1100px;
-  margin: 0 auto;
-  background: #d9d9d9;
+  max-width: 1200px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.03); 
+  backdrop-filter: blur(10px);
   padding: 40px;
-  border-radius: 18px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
 }
 
 .dashboard-header {
@@ -85,69 +127,63 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
 }
 
 .dashboard-header h2 {
-  color: #353535;
+  font-weight: 200;
+  font-size: 2rem;
+  color: var(--text-light);
 }
 
 #logoutBtn {
-  background: #284b63;
-  color: white;
+  background: var(--accent-price);
+  color: var(--text-light);
   border: none;
-  padding: 8px 18px;
-  border-radius: 8px;
+  padding: 8px 20px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 #logoutBtn:hover {
-  background: #3c6e71;
+  background: var(--accent-hover);
 }
 
 .add-form {
-  display: flex;
-  gap: 12px;
-  width: 80%;
-  margin: 0 auto 30px auto;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: white;
-  border-radius: 14px;
-  border: 1px solid #d9d9d9;
+  width: 100%;
+  margin-bottom: 50px;
+  background: transparent;
+  border: 1px solid var(--bg-light);
 }
 
 .add-form input {
-  flex: 1;
-  min-width: 100px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid white;
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--bg-light);
+  color: var(--text-light);
+  padding: 15px;
   font-size: 14px;
-  transition: 0.2s;
-}
-
-.add-form input:focus {
   outline: none;
-  border-color: #284b63;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .add-form button {
-  padding: 10px 18px;
-  border-radius: 8px;
-  border: none;
-  background: #353535;
-  color: white;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  text-transform: uppercase;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.3s;
+  padding: 12px 25px;
+  border-radius: 4px;
 }
 
 .add-form button:hover {
-  background: #284b63;
+  background: var(--input-bg);
 }
 
 table {
@@ -157,47 +193,149 @@ table {
 
 th {
   text-align: left;
-  padding: 14px;
-  background: white;
-  font-size: 13px;
+  padding: 20px;
+  background: transparent;
+  color: var(--bg-dark);
+  border-bottom: 1px solid var(--bg-light);
+  font-weight: 400;
   text-transform: uppercase;
-  color: #64748b;
+  font-size: 12px;
+  letter-spacing: 1px;
 }
 
 td {
-  padding: 14px;
-  border-bottom: 1px solid #d9d9d9;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-light);
+  font-size: 0.95rem;
 }
 
 tr:hover {
-  background: white;
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .edit-btn {
-  background: #3c6e71;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
+  background: transparent;
+  border: 1px solid var(--bg-light);
+  color: var(--text-light);
+  padding: 8px 15px;
+  font-size: 11px;
+  text-transform: uppercase;
   cursor: pointer;
-  margin-right: 6px;
-  transition: 0.2s;
+  margin-right: 5px;
+  transition: 0.3s;
 }
 
 .edit-btn:hover {
-  background: #284b63;
+  background: var(--bg-dark);
 }
 
 .admindlt {
-  background: darkred;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
+  background: transparent;
+  border: 1px solid var(--bg-light);
+  color: var(--text-light);
+  padding: 8px 15px;
+  font-size: 11px;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 .admindlt:hover {
-  background: #dc2626;
+  border-color: var(--accent-price);
+  color: var(--accent-price);
+}
+
+@media screen and (max-width: 600px) {
+  .login-box {
+    width: 90%;
+    padding: 40px 25px;
+  }
+
+  .dashboard {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .dashboard-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .add-form {
+    display: flex;
+    flex-direction: column;
+    border: none;
+  }
+
+  .add-form input {
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+  }
+
+  .add-form button {
+    width: 100%;
+    padding: 15px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  th {
+    display: none;
+  }
+
+  tr {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  td {
+    border: none;
+    padding: 8px 0;
+    text-align: right;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 45%;
+    font-weight: 700;
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--accent-price);
+  }
+
+  td:last-child {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding-left: 0;
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+  }
+
+  .edit-btn, .admindlt {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+  }
 }

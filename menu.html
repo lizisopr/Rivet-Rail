@@ -57,93 +57,67 @@
 </nav>
 </header> 
 
-
-  <section class="startmenu">
-
+<section class="startmenu">
   <div class="imgover"></div>
-<img src="https://images.trvl-media.com/lodging/23000000/22510000/22503600/22503546/468e7f83.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill" alt="">
+  <img src="https://images.trvl-media.com/lodging/23000000/22510000/22503600/22503546/468e7f83.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill" alt="Hero Background">
   <div class="hero-caption">
-    <h3 class="animate-text">The Rivet & Rail Kitchen</h5>
+    <h3 class="animate-text">The Rivet & Rail Kitchen</h3>
     <p class="animate-text-delay">
-     Breakfast & Dinner: Locally Sourced. Exceptionally Prepared
+      Breakfast & Dinner: Locally Sourced. Exceptionally Prepared
     </p>
     <a href="#menu">
-    <button>Explore</button>
+      <button>Explore</button>
     </a>
+  </div>
+</section>
+
+<section class="colllll" id="menu">
+  <div class="main">
+    <h2>Our Menu</h2>
+    <p>Crafted with Passion</p> 
+  </div>
+
+  <div class="filters">
+    <input type="text" id="searchInput" placeholder="Search for food...">
+    <select id="priceFilter">
+      <option value="all">All Prices</option>
+      <option value="low">Under $15</option>
+      <option value="mid">$15 - $25</option>
+      <option value="high">Above $25</option>
+    </select>
+  </div>        
+        
+  <div class="menu-grid">
+    <section id="breakfast" class="category-col">
+      <h2>Breakfast</h2>
+      <div class="items-container"></div>
     </section>
 
+    <section id="lunch" class="category-col">
+      <h2>Lunch</h2>
+      <div class="items-container"></div>
+    </section>
 
-    <section class="colllll" id="menu" >
-      <div class="main">
-      <h2>Our Menu</h1>
-      <p>Crafted with Passion</p> 
-        </div>
-        
- <div class="menu-grid">
-  <section id="breakfast" class="category-col">
-    <h2>Breakfast</h2>
-    <div class="items-container"></div>
-  </section>
+    <section id="dinner" class="category-col">
+      <h2>Dinner</h2>
+      <div class="items-container"></div>
+    </section>
 
-  <section id="lunch" class="category-col">
-    <h2>Lunch</h2>
-    <div class="items-container"></div>
-  </section>
-
-  <section id="dinner" class="category-col">
-    <h2>Dinner</h2>
-    <div class="items-container"></div>
-  </section>
-
-  <section id="dessert" class="category-col">
-    <h2>Dessert</h2>
-    <div class="items-container"></div>
-  </section>
-</div>
-
-<div id="editModal" class="modal">
-  <div class="modal-content">
-    <h3>Edit Menu Item</h3>
-    
-    <label>Name</label>
-    <input type="text" id="editName">
-
-    <label>Price</label>
-    <input type="number" id="editPrice">
-    
-    <label>Category</label>
-    <select id="editCategory">
-      <option value="breakfast">Breakfast</option>
-      <option value="lunch">Lunch</option>
-      <option value="dinner">Dinner</option>
-      <option value="dessert">Dessert</option>
-    </select>
-
-    <label>Description</label>
-    <textarea id="editDescription"></textarea>
-
-    <label>Image URL</label>
-    <input type="text" id="editImage">
-
-    <div style="margin-top: 20px;">
-      <button class="save-btn" onclick="saveEdit()" style="background: green; color: white; padding: 10px 20px; border: none; cursor: pointer;">Save Changes</button>
-      <button class="cancel-btn" onclick="closeModal()" style="background: #ccc; padding: 10px 20px; border: none; cursor: pointer; margin-left: 10px;">Cancel</button>
-    </div>
+    <section id="dessert" class="category-col">
+      <h2>Dessert</h2>
+      <div class="items-container"></div>
+    </section>
   </div>
-</div>
 
-    <div class="redtext">
-        <p>Please note: Due to our commitment to local sourcing and peak freshness,
-        <br> menu items and pricing are subject to daily change.</p>
-    </div>
-  </section>
+  <div class="redtext">
+    <p>Please note: Due to our commitment to local sourcing and peak freshness,
+    <br> menu items and pricing are subject to daily change.</p>
+  </div>
+</section>
 
-
-  <section class="drinks-section">
+<section class="drinks-section">
   <div class="drinks-content">
-
     <h2>Refined Drinks</h2>
-
     <div class="menu-category">
       <h3>Artisan Beverages</h3>
       <div class="divider"></div>
@@ -151,85 +125,83 @@
       <div class="menu-item">
         <div class="item-header">
           <span>French Vanilla Latte</span>
-          <span style="color: #3b0510; gap: 15px;">$4.50</span>
+          <span class="foodprice">$4.50</span>
         </div>
-        <p>Smooth espresso blended with steamed milk and vanilla essence.</p>
+        <p class="item-descr">Smooth espresso blended with steamed milk and vanilla essence.</p>
       </div>
 
       <div class="menu-item">
         <div class="item-header">
           <span>Classic Cappuccino</span>
-          <span style="color: #3b0510; gap: 15px;">$3.80</span>
+          <span class="foodprice">$3.80</span>
         </div>
-        <p>Rich espresso topped with velvety milk foam.</p>
+        <p class="item-descr">Rich espresso topped with velvety milk foam.</p>
       </div>
 
       <div class="menu-item">
         <div class="item-header">
           <span>Caramel Macchiato</span>
-          <span style="color: #3b0510; gap: 15px;">$4.90</span>
+          <span class="foodprice">$4.90</span>
         </div>
-        <p>Espresso layered with milk and golden caramel drizzle.</p>
+        <p class="item-descr">Espresso layered with milk and golden caramel drizzle.</p>
       </div>
 
       <div class="menu-item">
         <div class="item-header">
           <span>Mocha Royale</span>
-          <span style="color: #3b0510; gap: 15px;">$5.20</span>
+          <span class="foodprice" >$5.20</span>
         </div>
-        <p>Dark chocolate blended with bold espresso and cream.</p>
+        <p class="item-descr">Dark chocolate blended with bold espresso and cream.</p>
       </div>
 
       <div class="menu-item">
         <div class="item-header">
           <span>Hazelnut Delight</span>
-          <span style="color: #3b0510; gap: 15px;">$4.70</span>
+          <span class="foodprice">$4.70</span>
         </div>
-        <p>Espresso infused with roasted hazelnut flavor.</p>
+        <p class="item-descr">Espresso infused with roasted hazelnut flavor.</p>
       </div>
 
       <div class="menu-item">
         <div class="item-header">
           <span>Matcha Latte</span>
-          <span style="color: #3b0510; gap: 15px;">$4.60</span>
+          <span class="foodprice">$4.60</span>
         </div>
-        <p>Premium green tea powder whisked with steamed milk.</p>
+        <p class="item-descr">Premium green tea powder whisked with steamed milk.</p>
       </div>
 
       <div class="menu-item">
         <div class="item-header">
           <span>Iced Americano</span>
-          <span style="color: #3b0510; gap: 15px;">$3.50</span>
+          <span class="foodprice">$3.50</span>
         </div>
-        <p>Chilled espresso diluted with crisp filtered water.</p>
+        <p class="item-descr">Chilled espresso diluted with crisp filtered water.</p>
       </div>
 
       <div class="menu-item">
         <div class="item-header">
           <span>Berry Sparkle</span>
-          <span style="color: #3b0510; gap: 15px;">$5.00</span>
+          <span class="foodprice">$5.00</span>
         </div>
-        <p>Fresh berries with sparkling mineral water and mint.</p>
+        <p class="item-descr">Fresh berries with sparkling mineral water and mint.</p>
       </div>
 
       <div class="menu-item">
         <div class="item-header">
           <span>Lemon Iced Tea</span>
-          <span style="color: #3b0510; gap: 15px;">$3.90</span>
+          <span class="foodprice">$3.90</span>
         </div>
-        <p>Fresh brewed tea with citrus and crushed ice.</p>
+        <p class="item-descr">Fresh brewed tea with citrus and crushed ice.</p>
       </div>
 
       <div class="menu-item">
         <div class="item-header">
           <span>Vanilla Milkshake</span>
-          <span style="color: #3b0510; gap: 15px;">$5.50</span>
+          <span class="foodprice">$5.50</span>
         </div>
-        <p>Classic creamy shake with pure vanilla extract.</p>
+        <p class="item-descr">Classic creamy shake with pure vanilla extract.</p>
       </div>
-
     </div>
-
   </div>
 </section>
 
@@ -253,11 +225,11 @@
 
     <div class="menualc">
       <h3 class="drink-name">Negroni</h3>
-      <p class="drink-desc"> Gin, Campari, Sweet Vermouth.</p>
+      <p class="drink-desc">Gin, Campari, Sweet Vermouth.</p>
       <span class="price">$7.00</span>
     </div>
 
-     <div class="menualc">
+    <div class="menualc">
       <h3 class="drink-name">Piña Colada</h3>
       <p class="drink-desc">Rum, Coconut Cream, Pineapple Juice.</p>
       <span class="price">$7.00</span>
@@ -275,7 +247,7 @@
       <span class="price">$7.00</span>
     </div>
 
-     <div class="menualc">
+    <div class="menualc">
       <h3 class="drink-name">Prosecco, Italy</h3>
       <p class="drink-desc">Crisp, bubbly, light.</p>
       <span class="price">$7.00</span>
@@ -292,9 +264,32 @@
       <p class="drink-desc">Hoppy, citrus, 6.5% ABV.</p>
       <span class="price">$7.00</span>
     </div>
+  </div>
+</div>
 
-    
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <h3>Edit Menu Item</h3>
+    <label>Name</label>
+    <input type="text" id="editName">
+    <label>Price</label>
+    <input type="number" id="editPrice">
+    <label>Category</label>
+    <select id="editCategory">
+      <option value="breakfast">Breakfast</option>
+      <option value="lunch">Lunch</option>
+      <option value="dinner">Dinner</option>
+      <option value="dessert">Dessert</option>
+    </select>
+    <label>Description</label>
+    <textarea id="editDescription"></textarea>
+    <label>Image URL</label>
+    <input type="text" id="editImage">
+    <div class="modal-actions">
+      <button class="save-btn" onclick="saveEdit()">Save Changes</button>
+      <button class="cancel-btn" onclick="closeModal()">Cancel</button>
     </div>
+  </div>
 </div>
 
     <footer>
