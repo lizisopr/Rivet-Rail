@@ -1,6 +1,4 @@
 const API_URL = "https://699f330678dda56d396ca8b7.mockapi.io/menu/menu";
-const searchInput = document.getElementById("searchInput");
-const priceFilter = document.getElementById("priceFilter");
 let editId = null;
 
 const sections = {
@@ -24,9 +22,9 @@ async function loadMenu() {
 }
 
 function renderRow(item) {
-  const validImg = item.image && item.image.startsWith('http') 
-                   ? item.image 
-                   : 'https://via.placeholder.com/300x200?text=No+Image+Found';
+  const validImg = item.image && item.image.startsWith("http")
+    ? item.image
+    : "https://via.placeholder.com/300x200?text=No+Image+Found";
 
   return `
     <div class="menu-item">
@@ -47,7 +45,7 @@ function renderRow(item) {
 }
 
 window.deletefood = async function(id) {
-  const confirmation = confirm("Are you sure you want to delete this delicious item?");
+  const confirmation = confirm("Are you sure you want to delete this item?");
   if (!confirmation) return;
 
   try {
@@ -74,7 +72,7 @@ window.editfood = async function(id) {
     document.getElementById("editDescription").value = data.description || "";
     document.getElementById("editImage").value = data.image || "";
 
-    modal.classList.add("active"); // CSS handles the display now
+    modal.classList.add("active");
   } catch (error) {
     console.error("Edit Load Error:", error);
   }
@@ -82,7 +80,6 @@ window.editfood = async function(id) {
 
 window.saveEdit = async function() {
   if (!editId) return;
-  const saveBtn = document.querySelector(".save-btn");
 
   const updatedItem = {
     name: document.getElementById("editName").value.trim(),
@@ -93,9 +90,6 @@ window.saveEdit = async function() {
   };
 
   try {
-    saveBtn.disabled = true;
-    saveBtn.innerText = "Saving...";
-
     const resp = await fetch(`${API_URL}/${editId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -104,13 +98,10 @@ window.saveEdit = async function() {
 
     if (resp.ok) {
       closeModal();
-      await loadMenu(); 
+      await loadMenu();
     }
   } catch (error) {
     console.error("Save Error:", error);
-  } finally {
-    saveBtn.disabled = false;
-    saveBtn.innerText = "Save Changes";
   }
 };
 
@@ -131,27 +122,5 @@ function renderMenu(items) {
     }
   });
 }
-
-function applyFilters() {
-  const searchValue = searchInput.value.toLowerCase();
-  const priceValue = priceFilter.value;
-
-  const filtered = allItems.filter(item => {
-    const matchesSearch = item.name.toLowerCase().includes(searchValue);
-    const itemPrice = parseFloat(item.price);
-    
-    let priceMatch = true;
-    if (priceValue === "low") priceMatch = itemPrice < 15;
-    if (priceValue === "mid") priceMatch = itemPrice >= 15 && itemPrice <= 25;
-    if (priceValue === "high") priceMatch = itemPrice > 25;
-
-    return matchesSearch && priceMatch;
-  });
-
-  renderMenu(filtered);
-}
-
-searchInput.addEventListener("input", applyFilters);
-priceFilter.addEventListener("change", applyFilters);
 
 loadMenu();
