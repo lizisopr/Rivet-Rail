@@ -872,195 +872,208 @@ footer img{
   box-shadow:0 0 5px rgba(0, 0, 0, 0.15);
 }
 
+:root {
+  --brand-color: hsl(46, 100%, 50%);
+  --black: hsl(0, 0%, 0%);
+  --white: hsl(0, 0%, 100%);
+  --font-title: "Montserrat", sans-serif;
+  --font-text: "Lato", sans-serif;
+}
+
 .roomscontainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
   max-width: 1200px;
-  padding: 40px 20px;
   margin: 0 auto;
 }
 
-.roomscontainer .rom-card {
+.rom-card {
+  display: grid;
   position: relative;
-  background-color: var(--primary-bg);
-  border-radius: 16px;
+  width: 320px;
+  height: 380px;
   overflow: hidden;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  z-index: 1;
+  border-radius: 0;
+  box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
 }
 
-.roomscontainer .rom-card::after {
+.rom-card > * {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.rom-card img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 500ms ease-in;
+}
+
+.rom-card:hover img {
+  transform: scale(1.15);
+}
+
+.rom-card .restt {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem 1.2rem;
+  background: linear-gradient(
+    180deg,
+    hsla(0, 0%, 0%, 0) 0%,
+    hsla(0, 0%, 0%, 0.8) 40%,
+    hsl(0, 0%, 0%) 100%
+  );
+  color: white;
+  z-index: 2;
+}
+
+.card__title--container {
+  position: relative;
+  width: fit-content;
+  margin-bottom: 1.2rem;
+}
+
+.card__title {
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  margin: 0;
+  color: var(--white);
+}
+
+.card__title::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.4), transparent 60%);
+  height: 4px;
+  width: calc(100% + 1rem);
+  bottom: -6px;
+  left: -1rem;
+  background-color: var(--brand-color);
   opacity: 0;
-  transition: 0.4s ease;
-  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: opacity 400ms ease-in, transform 400ms ease-out;
 }
 
-.roomscontainer .rom-card:hover::after {
+.rom-card:hover .card__title::after {
   opacity: 1;
+  transform: scaleX(1);
 }
 
-.roomscontainer .rom-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+.rom-card p {
+  font-family: var(--font-text);
+  font-size: 0.9rem;
+  margin: 2px 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 400ms ease-out;
 }
 
-.roomscontainer img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.6s ease;
+.button-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 400ms ease-out;
 }
 
-.roomscontainer .rom-card:hover img {
-  transform: scale(1.05);
+.rom-card:hover p, 
+.rom-card:hover .button-group {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 150ms;
 }
 
-.roomscontainer h3 {
-  padding: 18px 20px 5px;
-  font-size: 1.2em;
-  font-weight: 700;
-  color: var(--text-dark);
-  font-family: var(--font-secondary);
-  position: relative;
-  z-index: 2;
+.book-btn, .fav-btn {
+  padding: 0.6em;
+  font-family: var(--font-title);
+  font-weight: bold;
+  font-size: 0.8rem;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+  text-transform: uppercase;
 }
 
-.price {
-  padding: 0 20px;
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--accent-price);
-  position: relative;
-  z-index: 2;
-}
-
-.room-size {
-  padding: 0 20px 10px;
-  font-size: 0.85rem;
-  opacity: 0.7;
-  font-family: var(--font-secondary);
-  color: var(--text-dark);
-  position: relative;
-  z-index: 2;
+.book-btn {
+  background-color: var(--brand-color);
+  color: var(--black);
 }
 
 .fav-btn {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  z-index: 3;
+  background-color: transparent;
+  border: 1px solid var(--brand-color);
+  color: var(--brand-color);
+  border-radius: 17px;
+  transition: all 0.3s;
 }
 
-.fav-btn svg {
-  width: 24px;
-  fill: var(--accent-price);
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-}
-
-.fav-text {
-  margin-right: 8px;
-  background: var(--text-dark);
-  color: var(--text-light);
-  font-size: 12px;
-  padding: 4px 8px;
-  border-radius: 6px;
-  opacity: 0;
-  transform: translateX(10px);
-  transition: 0.3s ease;
-  pointer-events: none;
-  white-space: nowrap;
-  font-family: var(--font-secondary);
-}
-
-.fav-btn:hover .fav-text {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.restt {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  padding: 10px 20px 20px;
-  font-family: var(--font-secondary);
-  position: relative;
-  z-index: 2;
-}
-
-.restt button {
-  padding: 12px;
-  border-radius: 10px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.3s ease;
-  position: relative;
-  z-index: 2;
-}
-
-.restt button:first-child {
-  background: var(--accent-price);
-  color: var(--text-light);
-  border: none;
-}
-
-.restt button:first-child:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-}
-
-.restt button:last-child {
-  background: transparent;
-  border: 1px solid var(--accent-price);
-  color: var(--text-dark);
-}
-
-.restt button:last-child:hover {
-  background: var(--accent-hover);
-  color: var(--text-light);
-  transform: translateY(-2px);
+.fav-btn:hover {
+  background-color: var(--brand-color);
+  color: var(--black);
 }
 
 .fav-container {
-  margin: 0 auto;
-  padding: 75px 60px;
-  color: var(--text-dark);
-  line-height: 1.6;
-  min-height: 230px;
-  font-family: var(--font-secondary);
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  padding: 120px 20px 40px;
   gap: 25px;
+  justify-content: center;
 }
 
 .fav-container .rom-card {
-  background-color: var(--primary-bg);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   position: relative;
+  width: 320px;
+  height: 400px;
+  display: grid;
+  overflow: hidden;
 }
 
-.fav-container .rom-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+.fav-container .rom-card > * {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
 }
 
-.fav-container img {
+.fav-container .rom-card img {
   width: 100%;
-  height: 250px;
+  height: 100%;
   object-fit: cover;
-  display: block;
+}
+
+.fav-container .restt {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 60%, black 100%);
+  color: white;
+  z-index: 2;
+}
+
+.fav-container .button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.remove-btn {
+  background: transparent;
+  border: 1px solid #ff4d4d;
+  color: #ff4d4d;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 17px;
+  flex: 1;
+  transition: 0.3s;
+}
+
+.remove-btn:hover {
+  background: #ff4d4d;
+  color: white;
 }
 
 #adminicon {
@@ -1713,118 +1726,6 @@ tr {
 #adminicon:hover {
   transform: scale(1.1);
 }
-
-  #signupForm {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    background: var(--text-light);
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    font-family: var(--font-secondary);
-  }
-
-  #signupForm label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-
-  #signupForm input,
-  #signupForm select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid var(--border-subtle);
-    box-sizing: border-box;
-  }
-
-  .row {
-    display: flex;
-    gap: 10px;
-  }
-
-  .row input {
-    flex: 1;
-  }
-
-  #signupForm button {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--bg-dark);
-    color: var(--text-light);
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  #signupForm button:hover {
-    background-color: var(--input-bg);
-  }
-
-   form[action="signin"] {
-    max-width: 400px;
-    margin: 60px auto;
-    padding: 25px 30px;
-    background: var(--text-light);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    font-family: Arial, sans-serif;
-  }
-
-  form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: var(--text-dark);
-  }
-
- form input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 14px;
-    transition: border 0.2s;
-  }
-
-.buttonn {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--bg-light);
-    color: var(--text-light);
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
- .buttonn:hover {
-    background-color: var(--bg-light);
-  }
-
-   .signuplink {
-    text-align: center;
-    margin: 15px 0;
-    font-size: 14px;
-    color: var(--accent-price);
-  }
-
-  .signuplink a {
-    color: var(--accent-hover);
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.2s;
-  }
-
-  .signuplink a:hover {
-    color: var(--accent-price);
-  }
 
 @media screen and (max-width: 1024px) {
     .roomscontainer, .menu-grid {

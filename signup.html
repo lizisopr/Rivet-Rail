@@ -5,45 +5,289 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+   
+<style>
+.auth-page{
+height:100vh;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+color: #ffe600;
+overflow:hidden;
+position:relative;
+}
+
+.auth-page::before{
+content:"";
+position:absolute;
+width:600px;
+height:600px;
+background:#ffe600;
+filter:blur(180px);
+opacity:.25;
+top:-200px;
+left:-200px;
+animation:move1 12s infinite alternate;
+}
+
+.auth-page::after{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+background:#ffe600;
+filter:blur(180px);
+opacity:.2;
+bottom:-200px;
+right:-200px;
+animation:move2 14s infinite alternate;
+}
+
+@keyframes move1{
+0%{transform:translate(0,0)}
+100%{transform:translate(120px,80px)}
+}
+
+@keyframes move2{
+0%{transform:translate(0,0)}
+100%{transform:translate(-100px,-60px)}
+}
+
+.mainn-wrappper{
+width:1100px;
+display:flex;
+gap:50px;
+}
+
+.hotel-info-card{
+flex:1;
+padding:40px;
+}
+
+.hotel-info-card h2{
+font-size:30px;
+color:#ffe600;
+margin-bottom:10px;
+}
+
+.hotel-info-card p{
+color:#aaa;
+margin-bottom:30px;
+}
+
+.sub-card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+padding:20px;
+margin-bottom:20px;
+border-left:3px solid #ffe600;
+transition:.35s;
+transform:translateY(30px);
+opacity:0;
+animation:cardIn .8s forwards;
+}
+
+.sub-card:nth-child(3){animation-delay:.2s;}
+.sub-card:nth-child(4){animation-delay:.4s;}
+.sub-card:nth-child(5){animation-delay:.6s;}
+
+@keyframes cardIn{
+to{
+transform:translateY(0);
+opacity:1;
+}
+}
+
+.sub-card:hover{
+transform:translateY(-4px);
+background:rgba(255,255,255,0.08);
+}
+
+.sub-card h4{
+color:#ffe600;
+margin-bottom:6px;
+}
+
+.sub-card p{
+font-size:14px;
+color:#bbb;
+}
+
+
+.form-container{
+flex:1;
+padding:35px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(30px);
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:0 20px 60px rgba(0,0,0,0.8);
+}
+
+.form-container h3{
+font-size:26px;
+color:#ffe600;
+margin-bottom:5px;
+}
+
+.form-container p{
+color:#aaa;
+margin-bottom:20px;
+}
+
+#signupForm{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.input-group{
+display:flex;
+flex-direction:column;
+}
+
+.input-group:nth-child(7),
+.input-group:nth-child(8),
+.input-group:nth-child(9),
+.input-group:nth-child(10){
+grid-column:span 2;
+}
+
+input{
+padding:10px;
+border:none;
+border-bottom:1px solid rgba(255,255,255,0.2);
+background:transparent;
+color:white;
+outline:none;
+transition:.25s;
+}
+
+input::placeholder{
+color:#666;
+}
+
+input:focus{
+border-bottom:1px solid #ffe600;
+box-shadow:0 6px 8px -6px #ffe600;
+color: #bbb;
+}
+
+button{
+grid-column:span 2;
+margin-top:10px;
+padding:14px;
+background:#ffe600;
+color:black;
+border:none;
+font-weight:bold;
+cursor:pointer;
+transition:.25s;
+}
+
+button:hover{
+transform:scale(1.03);
+box-shadow:0 0 20px #ffe600;
+}
+
+
+input[type="number"] {
+    color: #bbb !important;
+    -webkit-text-fill-color: white !important; 
+}
+
+select {
+    color:  #bbb !important;
+    background-color: #222 !important; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    appearance: none; 
+    -webkit-appearance: none;
+    padding: 10px;
+}
+
+select option {
+    background-color: black;
+    color:#bbb ;
+}
+</style> 
 </head>
 <body>
-    
-  <form id="signupForm">
-  <label>First Name</label>
-  <input type="text" name="firstName" value="">
 
-  <label>Last Name</label>
-  <input type="text" name="lastName" value="">
 
-  <label>Age</label>
-  <input type="number" name="age" value="20">
+<div class="auth-page">
+ <div class="mainn-wrappper">
+  <div class="hotel-info-card">
 
-  <label>Email</label>
-  <input type="email" name="email" value="" required>
+      <h2>Experience Luxury at Rivet-Rail</h2>
+      <p>Your comfort is our priority. Enjoy world-class railway-hotel service.</p>
 
-  <label>Password</label>
-  <input type="password" name="password" value="" required>
+      <div class="sub-card">
+        <h4>Exclusive Member Rates</h4>
+        <p>Sign up to unlock 15% discount on your first booking.</p>
+      </div>
 
-  <label>Address</label>
-  <input type="text" name="address" value="">
+      <div class="sub-card">
+        <h4>Luxury Train Hotels</h4>
+        <p>Stay in unique rail-inspired hotel suites across the world.</p>
+      </div>
 
-  <label>Phone</label>
-  <input type="tel" name="phone" value="">
+      <div class="sub-card">
+        <h4>Secure Reservations</h4>
+        <p>Your bookings and personal information are always protected.</p>
+      </div>
+ </div>
+ <div class="formm-container">
 
-  <label>Zipcode</label>
-  <input type="text" name="zipcode" value="">
+      <h3>Rivet-Rail</h3>
+      <p>Create your account</p>
 
-  <label>Avatar URL</label>
-  <input type="url" name="avatar" value="">
+      <form id="signupForm">
 
-  <label>Gender</label>
-  <select name="gender">
-      <option value="MALE">Male</option>
-      <option value="FEMALE" selected>Female</option>
-  </select>
+        <div class="input-group">
+          <input type="text" placeholder="firstName" value="">
+        </div>
 
-  <button type="submit">Sign Up</button>
-</form>     
+        <div class="input-group">
+          <input type="text" placeholder="lastName" value="">
+        </div>
+
+        <div class="input-group">
+          <input type="number" value="20">
+        </div>
+
+        <div class="input-group">
+          <input type="email" placeholder="email" value="" required>
+        </div>
+
+        <div class="input-group">
+          <input type="password" placeholder="password" value="" required>
+        </div>
+
+        <div class="input-group">
+          <input type="text" placeholder="address" value="">
+        </div>
+
+        <div class="input-group">
+          <input type="tel" placeholder="phone" value="">
+        </div>
+
+        <div class="input-group">
+          <input type="text" placeholder="zipcode" value="">
+        </div>
+
+        <div class="input-group">
+          <input type="url" placeholder="avatar url" value="">
+        </div>
+
+        <div class="input-group">
+          <input type="text" placeholder="MALE OR FEMALE" value="">
+        </div>
+
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
 
     <script src="signup.js"></script>
 </body>

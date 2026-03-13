@@ -4,65 +4,213 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+   :root {
+  --primary-gold: #FFD700;
+  --secondary-yellow: #FFEA70;
+  --bg-black: #000000;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --text-gray: #aaa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg-black);
+  overflow: hidden;
+}
+
+.auth-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  position: relative;
+}
+
+.auth-page::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: var(--primary-gold);
+  filter: blur(180px);
+  opacity: .15;
+  top: -200px;
+  left: -200px;
+}
+
+.auth-page::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: var(--secondary-yellow);
+  filter: blur(180px);
+  opacity: .12;
+  bottom: -200px;
+  right: -200px;
+}
+
+.main-wrapper {
+  width: 900px;
+  display: flex;
+  gap: 40px;
+  z-index: 10;
+}
+
+.form-container {
+  flex: 1;
+  padding: 40px;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  border-radius: 16px;
+}
+
+.form-container h3 {
+  font-size: 28px;
+  color: var(--primary-gold);
+  margin-bottom: 8px;
+}
+
+.form-container p {
+  color: #888;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-container input:focus {
+  border-bottom: 1px solid var(--primary-gold);
+  box-shadow: 0 6px 8px -6px var(--primary-gold);
+}
+
+.buttonn {
+  width: 100%;
+  padding: 16px;
+  background: var(--primary-gold);
+  color: black;
+  border: none;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: 0.3s ease;
+}
+
+.buttonn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(255,215,0,0.5);
+}
+
+.signuplink {
+  color: #ccc;
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+.signuplink a {
+  color: var(--primary-gold);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.hotel-info-card {
+  flex: 1;
+  padding: 30px;
+}
+
+.hotel-info-card h2 {
+  font-size: 34px;
+  color: var(--primary-gold);
+  margin-bottom: 12px;
+}
+
+.hotel-info-card p {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.sub-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  margin-bottom: 15px;
+  border-left: 4px solid var(--primary-gold);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sub-card:hover {
+  transform: translateX(5px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(255,215,0,0.35);
+}
+
+    </style>
 </head>
 <body>
-     <form action="signin">
- <div class="rowwe">
-      <div class="inpput-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Enter your email" required>
+
+<div class="auth-page">
+  <div class="main-wrapper">
+
+    <div class="form-container">
+      <h3>Rivet-Rail</h3>
+      <p>Welcome back!</p>
+
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+
+        <p class="signuplink">
+          Don't have an account? <a href="signup.html">Sign Up</a>
+        </p>
+
+        <button class="buttonn">Log In</button>
+      </form>
+    </div>
+
+    <div class="hotel-info-card">
+      <h2>Welcome Back to Rivet-Rail</h2>
+      <p>"Ready for your next luxurious journey? We've missed you!"</p>
+
+      <div class="sub-card">
+        <h4>Quick Booking</h4>
+        <p>Manage your reservations instantly after logging in.</p>
+      </div>
+
+      <div class="sub-card">
+        <h4>Exclusive Offers</h4>
+        <p>Access members-only deals and discounts immediately.</p>
+      </div>
+
+      <div class="sub-card">
+        <h4>Secure Access</h4>
+        <p>Your account info remains protected with top-tier security.</p>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="rowwe">
-      <div class="inpput-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter your password" required>
-      </div>
-    </div>
-
-  <p class="signuplink">
-    Don't have an account? 
-    <a href="signup.html">Sign Up</a>
-  </p>
-
-    <button class="buttonn">sign in</button>
-    </form>
-
-     <footer>
-       <div class="footercont">
-       
-        <div class="footlog footcol">
-            <h4 class="logotext">Rivet 
-                <img src="img/hotel-apartment-accommodation-svgrepo-com.svg" alt=""/>  Rail</h4>
-            <p class="tag">Your Urban Sanctuary.</p>
-            <p class="copyright">&copy; 2025 Rivet & Rail Hotel. All rights reserved.</p>
-        </div>
-
-        <div class="footercol footer-links">
-            <h4>Explore</h4>
-            <ul>
-                <li><a href="rooms.html">Rooms</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="fav.html">Favorites</a></li>
-            </ul>
-        </div>
-
-        <div class="foootercol footerconta">
-            <h4 style="font-family: var(--font-secondary);">Get In Touch</h4>
-            <p>123 Rail Way, Metropolis, CA 90210</p>
-            <p>Phone: <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
-            <p>Email: <a href="mailto:reserve@rivetrail.com">reserve@rivetrail.com</a></p>
-           <p>temp: <a href="https://www.wix.com/demone2/my-site-487">template</a></p>
-          </div>
-           </div>
-    </div>
-         
-     </footer>
-
+    
     <script src="login.js"></script>
 </body>
 </html>

@@ -5,40 +5,48 @@ const priceFilter = document.getElementById("priceFilter");
 let allRooms = [];
 
 function isLoggedIn() {
-  return localStorage.getItem("user");
+  return localStorage.getItem("access_token");
 }
 
 function renderFavButton(roomId, title, image) {
-  if (!isLoggedIn()) return "";
-  return `<button onclick="addToFavs(${roomId}, '${title}', '${image}')">Add to favs</button>`;
+  if (!isLoggedIn()) return ""; 
+  return `<button class="fav-btn" onclick="addToFavs(${roomId}, '${title}', '${image}')">Add to favs</button>`;
 }
 
 async function getRooms() {
-  const res = await fetch(`${API_URL}rooms`);
-  allRooms = await res.json();
-  renderRooms(allRooms);
+  try {
+    const res = await fetch(`${API_URL}rooms`);
+    allRooms = await res.json();
+    renderRooms(allRooms);
+  } catch (err) {
+    console.error(err);
+  }
 }
 
-function renderRooms(rooms){
+function renderRooms(rooms) {
   container.innerHTML = "";
   rooms.forEach(room => {
     container.innerHTML += `
       <div class="rom-card">
-        <img src="${room.image}" alt="">
-        <h3>${room.title}</h3>
+        <img src="${room.image}" alt="${room.title}">
         <div class="restt">
+          <div class="card__title--container">
+            <h3 class="card__title">${room.title}</h3>
+          </div>
           <p><strong>Size:</strong> ${room.size}m²</p>
           <p><strong>Price:</strong> $${room.price}</p>
-          <button class="book-btn" onclick="reserveRoom(${room.id})">Reserve Now</button>
-          ${renderFavButton(room.id, room.title, room.image)}
+          <div class="button-group">
+            <button class="book-btn" onclick="reserveRoom(${room.id})">Reserve Now</button>
+            ${isLoggedIn() ? `<button class="fav-btn" onclick="addToFavs(${room.id}, '${room.title}', '${room.image}')">Add to favs</button>` : ""}
+          </div>
         </div>
       </div>
     `;
   });
 }
 
-function reserveRoom(roomId){
-  if(!isLoggedIn()){
+function reserveRoom(roomId) {
+  if (!isLoggedIn()) {
     alert("Please login first");
     window.location.href = "login.html";
     return;
@@ -56,6 +64,7 @@ async function addToFavs(id, title, image) {
   const res = await fetch(`${API_URL}favs`);
   const favs = await res.json();
   const exists = favs.find(fav => String(fav.productId) === String(id));
+  
   if (exists) {
     alert("This room is already in your favorites");
     return;
@@ -63,7 +72,7 @@ async function addToFavs(id, title, image) {
 
   await fetch(`${API_URL}favs`, {
     method: "POST",
-    headers: {"Content-type": "application/json"},
+    headers: { "Content-type": "application/json" },
     body: JSON.stringify({ productId: id, title, image })
   });
 
@@ -75,24 +84,23 @@ function applyFilters() {
   const sizeValue = sizeFilter.value;
   const priceValue = priceFilter.value;
 
-  if(sizeValue){
+  if (sizeValue) {
     filtered = filtered.filter(room => {
       const size = parseFloat(room.size);
-      if(sizeValue === "small") return size <= 20;
-      if(sizeValue === "medium") return size > 20 && size <= 40;
-      if(sizeValue === "large") return size > 40;
+      if (sizeValue === "small") return size <= 20;
+      if (sizeValue === "medium") return size > 20 && size <= 40;
+      if (sizeValue === "large") return size > 40;
     });
   }
 
-  if(priceValue){
+  if (priceValue) {
     filtered = filtered.filter(room => {
       const price = parseFloat(room.price);
-      if(priceValue === "low") return price < 200;
-      if(priceValue === "mid") return price >= 200 && price <= 300;
-      if(priceValue === "high") return price > 400;
+      if (priceValue === "low") return price < 200;
+      if (priceValue === "mid") return price >= 200 && price <= 300;
+      if (priceValue === "high") return price > 400;
     });
   }
-
   renderRooms(filtered);
 }
 

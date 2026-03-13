@@ -1,42 +1,33 @@
-const form = document.querySelector("form");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-
+const inputs = document.querySelectorAll("#loginForm input");
 const API_URL = "https://api.everrest.educata.dev/auth/sign_in";
 
-form.addEventListener("submit", async function(e) {
-  e.preventDefault();
+if (localStorage.getItem('access_token')) {
+  window.location.href = "rooms.html";
+}
 
-  const email = emailInput.value.trim();
-  const password = passwordInput.value;
-
-  if (!email || !password) {
-    console.log("Email and password are required.");
-    return;
-  }
-
-  const userData = { email, password };
-
+async function logIn(event) {
+  event.preventDefault();
+  const credentials = { email: inputs[0].value, password: inputs[1].value };
+  
   try {
-    const response = await fetch(API_URL, {
+    const resp = await fetch(API_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData),
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(credentials)
     });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      console.log("Sign in failed:", data.message || "Invalid credentials");
-      return;
+    
+    const answer = await resp.json();
+    
+    if (resp.ok && answer.access_token) {
+      localStorage.setItem("access_token", answer.access_token);
+      localStorage.setItem("refresh_token", answer.refresh_token);
+      window.location.href = "rooms.html";
+    } else {
+      alert("Invalid email or password");
     }
-
-    localStorage.setItem("token", data.access_token);
-    localStorage.setItem("user", JSON.stringify(data.user));
-
-    window.location.href = "rooms.html";
-
-  } catch (error) {
-    console.error("Network error:", error);
+  } catch (err) {
+    console.error(err);
   }
-});
+}
+
+document.getElementById("loginForm").addEventListener("submit", logIn);

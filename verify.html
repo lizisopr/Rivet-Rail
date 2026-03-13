@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+:root {
+    --primary-gold: #FFD700;
+    --bg-black: #000000;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --text-gray: #aaa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-black);
+    overflow: hidden;
+}
+
+.auth-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+}
+
+.auth-page::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: var(--primary-gold);
+    filter: blur(180px);
+    opacity: .15;
+    top: -200px;
+    left: -200px;
+    animation: move1 12s infinite alternate;
+}
+
+.auth-page::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: var(--primary-gold);
+    filter: blur(180px);
+    opacity: .12;
+    bottom: -200px;
+    right: -200px;
+    animation: move2 14s infinite alternate;
+}
+
+@keyframes move1 { 0% { transform: translate(0,0);} 100% { transform: translate(120px,80px); } }
+@keyframes move2 { 0% { transform: translate(0,0);} 100% { transform: translate(-100px,-60px); } }
+
+.main-wrapper {
+    width: 1000px;
+    display: flex;
+    gap: 50px;
+    z-index: 10;
+}
+
+.hotel-info-card {
+    flex: 1;
+    padding: 40px;
+}
+
+.hotel-info-card h2 {
+    font-size: 40px;
+    color: var(--primary-gold);
+    margin-bottom: 15px;
+    line-height: 1.1;
+}
+
+.hotel-info-card p {
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.sub-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    padding: 25px;
+    margin-bottom: 25px;
+    border-left: 4px solid var(--primary-gold);
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sub-card:hover {
+    transform: translateX(5px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+}
+
+.sub-card h4 {
+    color: var(--primary-gold);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sub-card p {
+    font-size: 14px;
+    color: #bbb;
+    margin-bottom: 0;
+}
+
+.form-container {
+    flex: 1;
+    padding: 45px;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+
+.form-container h3 {
+    font-size: 28px;
+    color: var(--primary-gold);
+    margin-bottom: 5px;
+}
+
+.form-container p.subtitle {
+    color: #888;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+#verifyForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#verifyForm input {
+    padding: 12px;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+#verifyForm input:focus {
+    border-bottom: 1px solid var(--primary-gold);
+    box-shadow: 0 8px 10px -8px var(--primary-gold);
+}
+
+#verifyForm button {
+    padding: 16px;
+    background: var(--primary-gold);
+    color: black;
+    border: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer; 
+    transition: 0.3s ease;
+}
+
+#verifyForm button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+}
+
+#verifyForm a {
+    color: var(--primary-gold);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+#statusMsg {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #FFD700;
+}
+</style>
+</head>
+<body>
+<div class="auth-page">
+    <div class="main-wrapper">
+        <div class="form-container">
+            <h3>Rivet-Rail</h3>
+            <p class="subtitle">Enter the verification code sent to your inbox</p>
+            
+            <form id="verifyForm">
+                <input type="email" id="email" placeholder="Email" value="user@example.com" readonly>
+                <input type="text" id="code" placeholder="6-digit code">
+                <button type="submit">Verify</button>
+            </form>
+
+            <p style="margin-top:15px;">
+                <a href="#" id="resendBtn">Request New OTP</a>
+            </p>
+
+            <div id="statusMsg"></div>
+        </div>
+
+        <div class="hotel-info-card">
+            <h2>Protect Your Account</h2>
+            <p>Rivet-Rail ensures your account stays secure with advanced verification.</p>
+
+            <div class="sub-card">
+                <h4>Instant Access</h4>
+                <p>Verify quickly to continue enjoying premium services without delay.</p>
+            </div>
+
+            <div class="sub-card">
+                <h4>Expert Support</h4>
+                <p>Our team is ready 24/7 to help if you experience any issues.</p>
+            </div>
+
+            <div class="sub-card">
+                <h4>Trusted Security</h4>
+                <p>All information is encrypted to meet the highest security standards.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="verify.js"></script>
+</body>
+</html>
