@@ -594,191 +594,154 @@ footer h4 {
 
 /* contact */
 
-.booking-section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  background: 
-    radial-gradient(circle at right, rgba(242, 244, 243, 0.2) 0%, transparent 40%),
-    linear-gradient(rgba(10, 9, 8, 0.15), rgba(10, 9, 8, 0.15)), 
-    url('https://i.travelapi.com/lodging/23000000/22510000/22503600/22503546/2e17649b_z.jpg') center/cover no-repeat;
-  padding: 60px 10%;
+.herrrrrro{
+  height:260px;
+  background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),
+  url('https://i.travelapi.com/lodging/23000000/22510000/22503600/22503546/2e17649b_z.jpg');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-.booking-card {
-  width: 100%;
-  max-width: 450px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  padding: 50px 40px;
-  box-shadow: 
-    0 20px 40px rgba(10, 9, 8, 0.1),
-    0 1px 1px rgba(255, 255, 255, 0.5) inset;
+.herrrrrro h1{
+  color:white;
+  letter-spacing:4px;
 }
 
-.booking-card h2 {
-  font-size: 2.2rem;
-  color: var(--text-dark);
-  margin-bottom: 30px;
-  text-align: left;
-  font-weight: 700;
+.sectionnnnn{
+  max-width:1000px;
+  margin:auto;
+  padding:50px 20px;
+  text-align:center;
 }
 
-.booking-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.addddress small{
+  color:#b89b5e;
 }
 
-.booking-form label {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 800;
-  color: var(--bg-light);
-  margin-bottom: 6px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.addddress p{
+  margin-top:10px;
+  font-size:14px;
 }
 
-.booking-form input,
-.booking-form select {
-  width: 100%;
-  padding: 14px 18px;
-  border: 1px solid var(--border-subtle);
-  background-color: var(--input-bg);
-  color: var(--text-light);
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
+.inffffo-boxes{
+  display:flex;
+  margin-top:40px;
 }
 
-.booking-form input:focus {
-  border-color: var(--accent-price);
-  background-color: var(--accent-hover);
-  outline: none;
+.infffo{
+  flex:1;
+  border-right:1px solid #ddd;
 }
 
-.booking-form input::-webkit-calendar-picker-indicator {
-  filter: invert(0.8);
-  cursor: pointer;
+.infffo:last-child{
+  border:none;
 }
 
-.book-btn {
-  margin-top: 15px;
-  background: var(--accent-price);
-  color: var(--text-light);
-  border: none;
-  padding: 18px;
-  border-radius: 15px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.infffo h4{
+  margin-top:10px;
 }
 
-.book-btn:hover {
-  background: var(--accent-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(73, 17, 28, 0.2);
+.infffo p{
+  font-size:13px;
+  color:#777;
 }
 
-.contact-section {
-  background: var(--primary-bg);
-  padding: 100px 20px;
-  display: flex;
-  justify-content: center;
+.conttact-section{
+  margin-top:60px;
 }
 
-.contact-container {
-  width: 100%;
-  max-width: 600px;
-  text-align: center;
+.conttact-section small{
+  color:#b89b5e;
 }
 
-.contact-container h2 {
-  font-size: 2.5rem;
-  margin-bottom: 50px;
-  font-family: var(--font-secondary);
-  color: var(--text-dark);
-  letter-spacing: 2px;
+.tabbbbbble{
+  margin-top:20px;
 }
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+.roooooow{
+  display:flex;
+  justify-content:space-between;
+  padding:10px 0;
+  border-bottom:1px solid #eee;
+  font-size:14px;
 }
 
-.input-group {
-  position: relative;
+.roooooow span:last-child{
+  color:#b89b5e;
 }
 
-.input-group input,
-.input-group textarea {
-  width: 100%;
-  border: none;
-  border-bottom: 2px solid var(--text-dark);
-  padding: 12px 0;
-  font-size: 1rem;
-  background: transparent;
-  outline: none;
-  color: var(--text-dark);
-  font-family: var(--font-secondary);
+.reservation-section{
+  margin-top:80px;
 }
 
-.input-group textarea {
-  resize: none;
-  height: 100px;
+.reservation-section h2{
+  letter-spacing:2px;
 }
 
-.input-group label {
-  position: absolute;
-  left: 0;
-  top: 12px;
-  font-size: 0.95rem;
-  color: var(--text-dark);
-  transition: 0.3s ease;
-  pointer-events: none;
+.suuuuuuuub{
+  font-size:13px;
+  color:#777;
+  margin:10px 0 30px;
 }
 
-.input-group input:focus + label,
-.input-group input:valid + label,
-.input-group textarea:focus + label,
-.input-group textarea:valid + label {
-  top: -18px;
-  font-size: 0.75rem;
-  color: var(--accent-price);
+.reservation-form{
+  max-width:800px;
+  margin:auto;
 }
 
-.contact-form button {
-  margin-top: 30px;
-  padding: 14px;
-  border: 2px solid var(--text-dark);
-  background: transparent;
-  color: var(--text-dark);
-  font-family: var(--font-secondary);
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: 0.3s ease;
+.grrrrrrrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
 }
 
-.contact-form button:hover {
-  background: var(--text-dark);
-  color: var(--text-light);
+.reservation-form input,
+.reservation-form select,
+.reservation-form textarea{
+  padding:12px;
+  border:1px solid #ddd;
+  outline:none;
 }
+
+.reservation-form textarea{
+  margin-top:15px;
+  width:100%;
+  height:100px;
+}
+
+.reserrrrve-btn{
+  margin-top:20px;
+  padding:14px;
+  background:black;
+  color:white;
+  border:none;
+  width:100%;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.reserrrrve-btn:hover{
+  background:#caa400;
+}
+
 
 /* rooms */
 
 .someforbackgr {
     padding-top: 100px;
     overflow-x: hidden;
-}
+    background-color: #F2F3F3;
 
- .someforbackgr {
-      background: linear-gradient(to right, #1f242d, #161a1d);
-      background-size: 600% 600%;
-      animation: gradientAnimation 25s ease infinite;
+      background-image: 
+      linear-gradient(135deg, #1F1F1F 0%, transparent 15%), 
+      linear-gradient(315deg, #1F1F1F 0%, transparent 10%);
+
+    
     }
+
 
     @keyframes gradientAnimation {
       0% { background-position: 0% 50%; }
@@ -1902,116 +1865,118 @@ tr {
   }
 
   /* contact */
-.booking-section {
-    padding: 40px 15px;
+.herrrrrro {
+    height: 200px;
+  }
+  
+  .herrrrrro h1 {
+    font-size: 20px;
+    letter-spacing: 2px;
+    padding: 0 10px;
+    text-align: center;
   }
 
-  .booking-card {
-    padding: 25px 20px;
-    width: 100%;
-    border-radius: 12px;
+  .sectionnnnn {
+    padding: 30px 15px;
   }
 
-  .date-group {
-    flex-direction: column; 
-    gap: 15px;
+  .inffffo-boxes {
+    flex-direction: column;
+    gap: 30px;
   }
 
-  .booking-form .input-group {
-    width: 100%;
+  .infffo {
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
   }
 
-  .booking-form button {
+  .infffo:last-child {
+    border-bottom: none;
+  }
+
+  .grrrrrrrid, 
+  .forrrrrrrm-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .reservation-form textarea,
+  .forrrrrrrm-grid textarea {
+    grid-column: span 1;
+    margin-top: 10px;
+  }
+
+  .reserrrrve-btn,
+  .bttttttttn {
     width: 100%;
     padding: 15px;
   }
 
-  .contact-section {
-    padding: 50px 20px;
+  .forrrrrrrm-box {
+    padding: 25px 15px;
+    margin-top: 30px;
   }
 
-  .contact-container {
-    padding: 0;
+  .roooooow {
+    font-size: 13px;
   }
-
-  .contact-form {
-    gap: 20px;
-  }
-
-  .contact-form button {
-    width: 100%;
-    font-size: 1rem;
-  }
-
   /* rooms  */
-.bgrm {
- padding-top: 100px;
+  .someforbackgr {
+    padding: 40px;
+  }
+
+  .rr-main-title {
+    font-size: 15px;
+  }
+
+  .rr-sub-text {
+    font-size: 10px;
+    max-width: 240px;
+  }
+
+.fillter {
+  gap: 8px;
 }
 
-.title h3{
-   font-size: 1.5em;
-   line-height: 1.2;
-   padding: 0 15px;
-     } 
-     
-   
- .title p{
-    font-size: 0.9em;
-    padding: 0 15px;
-    text-align: center;
- }  
+.fillter select:first-child {
+  max-width: 140px;
+  font-size: 12px;
+}
 
-  .roomscontainer{
-    display: grid;
-    gap: 30px;
-    padding: 20px;
+.fillter select:last-child {
+  max-width: 110px;
+  font-size: 12px;
+}
+
+  .roomscontainer {
+    gap: 18px;
+    padding: 18px 0;
+  }
+
+  .backgroundffavs{
+    padding-top: 30px;
+  }
+
+  .fav-container {
+    gap: 18px;
+  }
+
+  .rom-card {
+    width: 350px;
+    height: 300px;
+  }
+
+  .grrrrrrrid, 
+  .forrrrrrrm-grid {
+    gap: 8px;
     grid-template-columns: 1fr;
-     }
-
- .roomscontainer .room-card{
-    width: 90%;
-    margin: 0 auto;
-    margin-bottom: 15%;
   }
 
-   .roomscontainer h3{ 
-    font-size: 0.85em;
-     }
-
- .roomscontainer p{
-    font-size: 1em;
-    line-height: 1.4;
-    text-align: left;
-  }
-
-
- footer {
-    padding: 20px 10px;
-    text-align: center;
-  }
-
-   .fav-container{
-    min-height: 1200px;
-    display: grid;
-    padding: 20px;
-    grid-template-columns: 1fr;
-    text-align: center;
-     }
-
- .fav-container .room-card{
-    width: 90%;
-    margin: 0 auto;
-    margin-bottom: 15%;
-  }
-
-   .fav-container h3{ 
-    font-size: 0.85em;
-     }
-
- .fav-container p{
-    font-size: 1em;
-    line-height: 1.4;
-    text-align: left;
+  .reserrrrve-btn,
+  .bttttttttn {
+    padding: 9px;
+    font-size: 13px;
   }
 
   /* menu */

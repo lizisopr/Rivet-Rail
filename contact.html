@@ -24,6 +24,56 @@
 <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Akaya+Kanadaka&family=Alegreya:ital,wght@0,400..900;1,400..900&family=BBH+Sans+Hegarty&family=Boldonse&family=Delius&family=Dorsa&family=Eagle+Lake&family=Ephesis&family=Faustina:ital,wght@0,300..800;1,300..800&family=Felipa&family=Fleur+De+Leah&family=Forum&family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans+Flex:opsz,wght@6..144,600&family=Handlee&family=Kings&family=Lavishly+Yours&family=New+Rocker&family=Outfit:wght@100..900&family=Passion+One:wght@400;700;900&family=Plaster&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rosarivo:ital@0;1&family=Rouge+Script&family=Space+Mono:wght@400;700&family=Special+Elite&family=Stack+Sans+Text:wght@200..700&family=Updock&family=Vast+Shadow&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+.forrrrrrrm-box {
+  margin-top: 50px;
+  background: white;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.forrrrrrrm-box small {
+  color: #b89b5e;
+}
+
+.forrrrrrrm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.forrrrrrrm-grid input,
+.forrrrrrrm-grid textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  outline: none;
+  box-sizing: border-box;
+  display: block;
+}
+
+.forrrrrrrm-grid textarea {
+  grid-column: span 2;
+  height: 90px;
+}
+
+.bttttttttn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.bttttttttn:hover {
+  background: #caa400;
+}
+
+</style>
 </head>
 <body>
         <header>
@@ -55,71 +105,117 @@
   <a href="fav.html">FAVORITES</a>
 </nav>
     </header>
-<section class="booking-section">
-  <div class="booking-bg"></div>
 
-  <div class="booking-card">
-    <h2>Book Your Stay</h2>
-    <p>Select your room and dates</p>
+<div class="herrrrrro">
+  <h1>CONTACT / RESERVE</h1>
+</div>
 
-    <form class="booking-form">
+<div class="sectionnnnn">
 
-      <div class="input-group">
+  <div class="addddress">
+    <small>Location</small>
+    <p>
+      123 Rail Way, Metropolis, CA 90210
+    </p>
+  </div>
+
+  <div class="inffffo-boxes">
+    <div class="infffo">
+      <h4>Make a Call</h4>
+      <p>+1 (555) 123-4567</p>
+    </div>
+    <div class="infffo">
+      <h4>Send a Mail</h4>
+      <p>reserve@rivetrail.com</p>
+    </div>
+    <div class="infffo">
+      <h4>Toll Free</h4>
+      <p>+1 (800) 987-6543</p>
+    </div>
+  </div>
+
+  <div class="forrrrrrrm-box">
+    <small>Send Us</small>
+    <h3>SEND YOUR MESSAGE</h3>
+
+    <form class="forrrrrrrm-grid">
+      <input type="text" placeholder="First Name">
+      <input type="email" placeholder="Email Address">
+      <input type="text" placeholder="Last Name">
+      <input type="text" placeholder="Subject">
+      <textarea placeholder="Message"></textarea>
+    </form>
+
+    <button class="bttttttttn">SUBMIT</button>
+  </div>
+
+  <div class="conttact-section">
+    <small>Quick Contacts</small>
+    <h3>CONTACT FOR ALL YOUR NEEDS</h3>
+
+    <div class="tabbbbbble">
+      <div class="roooooow">
+        <span>Reception</span>
+        <span>+1 (555) 123-4567</span>
+        <span>Receptionrivetrail@mail.com</span>
+      </div>
+      <div class="roooooow">
+        <span>Spa</span>
+        <span>+00 123 456</span>
+        <span>Sparivetrail@mail.com</span>
+      </div>
+      <div class="roooooow">
+        <span>Transportation</span>
+        <span>+00 123 456</span>
+        <span>Transportationrivetrail@mail.com</span>
+      </div>
+      <div class="roooooow">
+        <span>Laundry</span>
+        <span>+00 123 456</span>
+        <span>Laundryrivetrail@mail.com</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reservation-section">
+    <h2>BOOK YOUR STAY</h2>
+    <p class="suuuuuuuub">Choose your room and reserve easily</p>
+
+    <form class="reservation-form">
+
+      <div class="grrrrrrrid">
+        <input type="date">
+        <input type="text" placeholder="Your Name">
+
+        <input type="email" placeholder="Email Address">
+
         <select>
-          <option>Semi-Double Room — $199</option>
-          <option>Hollywood Twin Room — $219</option>
-          <option>Superior Double Room — $229</option>
+          <option>Select Room</option>
+          <option>Semi-Double Room — 28m² — $199</option>
+          <option>Hollywood Twin — $219</option>
+          <option>Superior Double — $229</option>
           <option>Rugged Twin — $319</option>
           <option>Suite — $799</option>
           <option>Atelier Suite — $749</option>
-          <option>Semi Double Room — $349</option>
           <option>Deluxe Executive Twin — $400</option>
-          <option>Honeymoon Jacuzzi Suite — $830</option>
+          <option>Honeymoon Suite — $999</option>
         </select>
+
+        <input type="number" placeholder="Guests">
+        <input type="tel" placeholder="Phone">
+
+        <input type="time">
+        <input type="time">
       </div>
 
-      <div class="date-group">
-        <div class="input-group">
-          <input type="date" required>
-        </div>
-        <div class="input-group">
-          <input type="date" required>
-        </div>
-      </div>
+      <textarea placeholder="Special Requests"></textarea>
 
-      <div class="input-group">
-        <input type="number" min="1" placeholder="Guests" required>
-      </div>
+      <button class="reserrrrve-btn">RESERVE NOW</button>
 
-      <button type="submit" class="book-btn">Reserve Now</button>
     </form>
   </div>
-</section>
 
-<section class="contact-section">
-  <div class="contact-container">
-    <h2>Contact Us</h2>
-
-    <form class="contact-form">
-      <div class="input-group">
-        <input type="text" required>
-        <label>Full Name</label>
-      </div>
-
-      <div class="input-group">
-        <input type="email" required>
-        <label>Email Address</label>
-      </div>
-
-      <div class="input-group">
-        <textarea required></textarea>
-        <label>Your Message</label>
-      </div>
-
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
-</section>
+</div>
      <footer>
        <div class="footercont">
        
