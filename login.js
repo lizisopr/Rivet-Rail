@@ -21,6 +21,8 @@ async function logIn(event) {
     if (resp.ok && answer.access_token) {
       localStorage.setItem("access_token", answer.access_token);
       localStorage.setItem("refresh_token", answer.refresh_token);
+      localStorage.setItem("currentUser", JSON.stringify(answer.user));
+      
       window.location.href = "rooms.html";
     } else {
       alert("Invalid email or password");

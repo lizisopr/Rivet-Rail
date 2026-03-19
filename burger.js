@@ -12,3 +12,11 @@ navLinks.forEach(link => {
     burger.checked = false; 
   });
 });
+
+const closeBtn = document.querySelector('.close-menu');
+
+closeBtn.addEventListener('click', () => {
+  nav.classList.remove('active');
+  overlay.classList.remove('active');
+  burger.checked = false;
+});
