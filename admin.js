@@ -1,4 +1,4 @@
-const API_URL = "https://694c17f7da5ddabf00360e11.mockapi.io/goodPeople";
+const API_URL = "https://69c31fe3b780a9ba03e61015.mockapi.io/reserv/peopleeee";
 const ADMIN_PASS = "1234";
 
 const loginBtn = document.getElementById("loginBtn");

@@ -30,14 +30,16 @@ function renderRooms(rooms) {
       <div class="rom-card">
         <img src="${room.image}" alt="${room.title}">
         <div class="restt">
-          <div class="card__title--container">
-            <h3 class="card__title">${room.title}</h3>
-          </div>
+          <h3 class="card__title">
+            <a href="details.html?id=${room.id}" style="text-decoration:none; color:inherit;">
+              ${room.title}
+            </a>
+          </h3>
           <p><strong>Size:</strong> ${room.size}m²</p>
           <p><strong>Price:</strong> $${room.price}</p>
           <div class="button-group">
-            <button class="book-btn" onclick="reserveRoom(${room.id})">Reserve Now</button>
-            ${isLoggedIn() ? `<button class="fav-btn" onclick="addToFavs(${room.id}, '${room.title}', '${room.image}')">Add to favs</button>` : ""}
+            <button class="boook-btn" onclick="reserveRoom(${room.id})">Reserve Now</button>
+            ${isLoggedIn() ? `<button class="favvvv-btn" onclick="addToFavs(${room.id}, '${room.title}', '${room.image}', '${room.price}', '${room.size}', '${room.description}')">Add to favs</button>` : ""}
           </div>
         </div>
       </div>
@@ -54,29 +56,40 @@ function reserveRoom(roomId) {
   window.location.href = "contact.html";
 }
 
-async function addToFavs(id, title, image) {
+async function addToFavs(id, title, image, price, size, description) {
   if (!isLoggedIn()) {
     alert("Please login first");
     window.location.href = "login.html";
     return;
   }
 
-  const res = await fetch(`${API_URL}favs`);
-  const favs = await res.json();
-  const exists = favs.find(fav => String(fav.productId) === String(id));
-  
-  if (exists) {
-    alert("This room is already in your favorites");
-    return;
+  try {
+    const res = await fetch(`${API_URL}favs`);
+    const favs = await res.json();
+    const exists = favs.find(fav => String(fav.productId) === String(id));
+    
+    if (exists) {
+      alert("This room is already in your favorites");
+      return;
+    }
+
+    await fetch(`${API_URL}favs`, {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({ 
+        productId: id, 
+        title, 
+        image, 
+        price, 
+        size, 
+        description 
+      })
+    });
+
+    alert("Added to favorites");
+  } catch (err) {
+    console.error("Error adding to favorites:", err);
   }
-
-  await fetch(`${API_URL}favs`, {
-    method: "POST",
-    headers: { "Content-type": "application/json" },
-    body: JSON.stringify({ productId: id, title, image })
-  });
-
-  alert("Added to favorites");
 }
 
 function applyFilters() {

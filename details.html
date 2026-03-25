@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="img/hotel-apartment-accommodation-svgrepo-com (1).ico">
+    <title>RIVET & RAIL</title>
+
+    <meta name="description"
+    content="Escape to Rivet & Rail, the premier luxury boutique hotel in Metropolis, CA. Experience timeless comfort, refined dining, and bespoke service in your private urban sanctuary. Book your exceptional stay today.">
+
+    <meta name="keywords" content="Luxury Boutique Hotel Metropolis CA Urban Sanctuary Hotel Metropolis  Rivet and Rail Hotel ">
+    <meta name="keywords" content="luxury hotel hotel urban style hotel">
+
+   
+    <meta name="keywords" content="spa & massage dinner parking car services movie night gym">
+
+    <meta name="keywords" content="tel:+15551234567 mailto:reserve@rivetrail.com">
+
+    <meta name="keywords" content="RIVET & RAIL">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: black;
+  background: #f4f4f4;
+}
+
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  background: linear-gradient(-45deg, #495057, #ffffff, #6c757d, #ffffff);
+  background-size: 400% 400%;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  overflow: hidden;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.back-btn {
+  background: #fff; 
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.back-btn:hover {
+  background: #ddd;
+}
+
+.reserve-btn {
+  background: #ffb400;
+  color: #fff;
+}
+
+h1 {
+  margin-top: 0;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: titleFade 0.6s forwards;
+}
+
+@keyframes titleFade {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  display: block;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: scale(0.95);
+  animation: imgFade 0.6s forwards 0.3s;
+}
+
+@keyframes imgFade {
+  to { opacity: 1; transform: scale(1); }
+}
+
+.room-info {
+  opacity: 0;
+  animation: infoFade 0.6s forwards 0.6s;
+}
+
+@keyframes infoFade {
+  to { opacity: 1; }
+}
+
+.room-info p {
+  margin: 8px 0;
+}
+
+.room-info strong {
+  color: #555;
+}
+
+.amenities {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.rating-stars {
+  color: #ffb400;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    margin: 15px;
+    padding: 15px;
+  }
+
+  img {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  .back-btn, .reserve-btn {
+    width: 100%;
+    margin: 8px 0;
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .room-info p {
+    font-size: 0.95rem;
+  }
+
+  .amenities {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container" id="product-detail"></div>
+
+<script>
+const container = document.getElementById("product-detail");
+const API_URL = "https://6988a45c780e8375a688d0f5.mockapi.io/rooms/";
+const urlParams = new URLSearchParams(window.location.search);
+const roomId = urlParams.get("id");
+
+function getStars(rating) {
+  let stars = "";
+  const full = Math.floor(rating || 0);
+  for (let i = 1; i <= 5; i++) stars += i <= full ? "★" : "☆";
+  return stars;
+}
+
+async function fetchRoom() {
+  if (!roomId) {
+    container.innerHTML = "<h2>No room selected</h2>";
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API_URL}${roomId}`);
+    const room = await res.json();
+
+    container.innerHTML = `
+      <h1>${room.title}</h1>
+      <img src="${room.image}" alt="${room.title}">
+      <div class="room-info">
+        <p><strong>Size:</strong> ${room.size} m²</p>
+        <p><strong>Price:</strong> $${room.price}/night</p>
+        <p><strong>Description:</strong> ${room.description}</p>
+        <p><strong>Rating:</strong> <span class="rating-stars">${getStars(room.rating)}</span> (${room.rating || 0}/5)</p>
+        <p><strong>Reviews:</strong> ${room.reviews || 0}</p>
+        <div class="amenities"><strong>Amenities:</strong> ${room.amenities ? room.amenities.join(", ") : "None"}</div>
+      </div>
+      <button class="reserve-btn" onclick="reserveRoom(${room.id})">Reserve Now</button>
+      <button class="back-btn" onclick="goBack()">Back</button>
+    `;
+  } catch (err) {
+    container.innerHTML = "<h2>Error loading room</h2>";
+    console.error(err);
+  }
+}
+
+function goBack() {
+  window.history.back();
+}
+
+function reserveRoom(id) {
+  if (!localStorage.getItem("access_token")) {
+    alert("Please login first");
+    window.location.href = "login.html";
+    return;
+  }
+  window.location.href = "contact.html";
+}
+
+document.addEventListener("DOMContentLoaded", fetchRoom);
+</script>
+
+</body>
+</html>

@@ -114,10 +114,71 @@
     </header> 
    <div class="nav-overlay"></div>
 
+
+
+    <div class="gx-controls-bar">
+  <input type="text" id="gx-search" placeholder="Search by name..." oninput="gx_filter()">
+  <select id="gx-sort" onchange="gx_filter()">
+    <option value="default">Sort By</option>
+    <option value="low">Price: Low to High</option>
+    <option value="high">Price: High to Low</option>
+    <option value="size">Size: Largest</option>
+  </select>
+  <button id="gx-compare-trigger" onclick="gx_openModal()" disabled>Compare (0)</button>
+</div>
+
+<div id="gx-modal-overlay" class="gx-modal">
+  <div class="gx-modal-content">
+    <span class="gx-close-btn" onclick="gx_closeModal()">&times;</span>
+    <h2 class="gx-modal-title">Room Comparison</h2>
+    <div id="gx-table-area"></div>
+  </div>
+</div>
+
     <section class="backgroundffavs">
     <section class="fav-container"></section>
-    </section>
 
+    <section class="gx-support-section">
+  <h2 class="gx-support-title">Our Best Services.</h2>
+  
+  <div class="gx-support-grid">
+    <div class="gx-support-card">
+      <div class="gx-support-icon-box">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+      </div>
+      <h3 class="gx-support-name">Reception</h3>
+      <p class="gx-support-text">Direct line to our front desk for immediate room service or assistance.</p>
+      <span class="gx-support-phone">+1 (555) 010-111</span>
+    </div>
+
+    <div class="gx-support-card gx-highlight-card">
+      <div class="gx-support-icon-box">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+        </svg>
+      </div>
+      <h3 class="gx-support-name">Fast Booking</h3>
+      <p class="gx-support-text">Manage your favorites and finalize your reservation in seconds.</p>
+      <span class="gx-support-phone">+1 (555) 010-222</span>
+    </div>
+
+    <div class="gx-support-card">
+      <div class="gx-support-icon-box">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+        </svg>
+      </div>
+      <h3 class="gx-support-name">Management</h3>
+      <p class="gx-support-text">Direct contact for corporate bookings and special requirements.</p>
+      <span class="gx-support-phone">+1 (555) 010-333</span>
+    </div>
+  </div>
+</section>
+
+    </section>
      <footer>
        <div class="footercont">
        
