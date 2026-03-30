@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+body {
+  background: #0b0b0b;
+  color: #e6c77a;
+  font-family: Arial, sans-serif;
+}
+
+.bacccccccck-btn {
+  width: auto;
+  min-width: 60px;
+  margin-top: 15px;
+  padding: 5px 12px;
+  background: transparent;
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 9px;
+  display: inline-block;
+}
+
+.bacccccccck-btn:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: #d4af37;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(212, 175, 55, 0.2);
+}
+
+.bacccccccck-btn:active {
+  transform: translateY(0);
+}
+
+.profile-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.profile-card {
+  width: 380px;
+  background: linear-gradient(145deg, #111, #1a1a1a);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  text-align: center;
+}
+
+.profile-page .profile-avatar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.profile-page .profile-avatar img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #d4af37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.profile-page h2 {
+  margin: 10px 0 20px;
+  color: #d4af37;
+}
+
+.profile-page .profile-info p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.profile-page .profile-info span {
+  color: #d4af37;
+  font-weight: 600;
+}
+
+.profile-page .profile-edit input,
+.profile-page .profile-edit select {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  border-radius: 10px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: #0f0f0f;
+  color: #fff;
+  outline: none;
+}
+
+.profile-page .profile-edit input:focus,
+.profile-page .profile-edit select:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+}
+
+.profile-page .profile-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.profile-page .profile-actions button,
+.profile-page .profile-edit button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  background: linear-gradient(145deg, #d4af37, #b8912f);
+  color: #000;
+  transition: 0.3s ease;
+}
+
+.profile-page .profile-actions button:hover,
+.profile-page .profile-edit button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+
+.profile-page .profile-actions button:last-child {
+  background: linear-gradient(145deg, #2b2b2b, #111);
+  color: #d4af37;
+  border: 1px solid #d4af37;
+}
+    </style>
+</head>
+<body>
+<button onclick="goBack()" class="bacccccccck-btn">Go Back</button>
+
+<div class="profile-page">
+  <div class="profile-card">
+
+    <div class="profile-avatar">
+      <img id="profileImage" src="https://media.istockphoto.com/id/1161086440/vector/avatar-flat-icon-on-black-background-black-style-vector-illustration.jpg?s=612x612&w=0&k=20&c=ITquPbLvpLjMTAs8nR0g0y_FCrtE758wGLYTvn6F_TI=" alt="avatar">
+    </div>
+
+    <h2 id="username"></h2>
+
+    <div class="profile-info" id="profileInfo">
+      <p>First Name: <span id="firstName"></span></p>
+      <p>Last Name: <span id="lastName"></span></p>
+      <p>Age: <span id="age"></span></p>
+      <p>Gender: <span id="gender"></span></p>
+    </div>
+
+<div class="profile-edit" id="editForm" style="display:none;">
+    <input id="editFirstName" placeholder="First Name">
+    <input id="editLastName" placeholder="Last Name">
+    <input id="editAge" type="number" placeholder="Age">
+    <input id="editAvatar" placeholder="Avatar URL">
+    <input id="editAddress" placeholder="Address">
+    <input id="editPhone" placeholder="Phone">
+    <input id="editZipcode" placeholder="Zipcode">
+
+    <select id="editGender">
+        <option value="MALE">MALE</option>
+        <option value="FEMALE">FEMALE</option>
+    </select>
+</div>
+
+<div class="profile-actions">
+  <button id="editBtn">Edit Profile</button> 
+  
+  <button id="saveBtn" style="display:none;">Save Changes</button>
+  
+  <button id="logoutBtn">Logout</button>
+</div>
+
+  </div>
+</div>
+
+<script src="profille.js"></script>
+</body>
+</html

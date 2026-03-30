@@ -1,35 +1,51 @@
+const loginForm = document.getElementById("loginForm");
 const inputs = document.querySelectorAll("#loginForm input");
-const API_URL = "https://api.everrest.educata.dev/auth/sign_in";
+const LOGIN_URL = "https://api.everrest.educata.dev/auth/sign_in";
 
-if (localStorage.getItem('access_token')) {
-  window.location.href = "rooms.html";
-}
-
-async function logIn(event) {
+async function login(event) {
   event.preventDefault();
-  const credentials = { email: inputs[0].value, password: inputs[1].value };
-  
+
+  const credentials = {
+    email: inputs[0].value,
+    password: inputs[1].value,
+  };
+
   try {
-    const resp = await fetch(API_URL, {
+    const resp = await fetch(LOGIN_URL, {
       method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(credentials)
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(credentials),
     });
-    
+
     const answer = await resp.json();
-    
-    if (resp.ok && answer.access_token) {
+
+    if (resp.ok) {
       localStorage.setItem("access_token", answer.access_token);
-      localStorage.setItem("refresh_token", answer.refresh_token);
-      localStorage.setItem("currentUser", JSON.stringify(answer.user));
-      
-      window.location.href = "rooms.html";
+
+      const userData = {
+        email: answer.email,
+        firstName: answer.firstName,
+        lastName: answer.lastName,
+        age: answer.age,
+        avatar: answer.avatar,
+        gender: answer.gender,
+        address: answer.address,
+        phone: answer.phone,
+        zipcode: answer.zipcode
+      };
+
+      localStorage.setItem("currentUser", answer.email);
+      localStorage.setItem(`user_${answer.email}`, JSON.stringify(userData));
+
+      window.location.href = "index.html";
     } else {
-      alert("Invalid email or password");
+      alert(answer.message || "Invalid credentials");
     }
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
   }
 }
 
-document.getElementById("loginForm").addEventListener("submit", logIn);
+if (loginForm) {
+  loginForm.addEventListener("submit", login);
+}

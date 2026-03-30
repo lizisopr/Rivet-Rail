@@ -7,17 +7,30 @@ let gx_selectedIds = [];
 
 async function getFavs() {
   try {
+    const email = localStorage.getItem("currentUser");
+
+    if (!email) {
+      gx_allData = [];
+      renderFavs([]);
+      return;
+    }
+
     const res = await fetch(API_URL);
-    gx_allData = await res.json();
+    const data = await res.json();
+
+    gx_allData = data.filter(f => f.userId === email);
+
     renderFavs(gx_allData);
-  } catch (err) { console.error(err); }
+
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 function gx_filter() {
-  const search = document.getElementById('gx-search').value.toLowerCase();
   const sortType = document.getElementById('gx-sort').value;
 
-  let result = gx_allData.filter(i => i.title.toLowerCase().includes(search));
+  let result = [...gx_allData];
 
   if (sortType === "low") result.sort((a, b) => a.price - b.price);
   if (sortType === "high") result.sort((a, b) => b.price - a.price);
@@ -87,12 +100,13 @@ function renderFavs(data) {
 }
 
 async function removeFromFavs(id) {
-  try {
-    await fetch(`${API_URL}/${id}`, { method: "DELETE" });
-    getFavs();
-  } catch (err) {
-    console.error(err);
-  }
+  const email = localStorage.getItem("currentUser");
+
+  const item = gx_allData.find(f => f.id === id && f.userId === email);
+  if (!item) return;
+
+  await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+  getFavs();
 }
 
 getFavs();

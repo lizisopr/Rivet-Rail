@@ -7,207 +7,259 @@
     <link rel="stylesheet" href="style.css">
    
 <style>
-.auth-page{
-height:100vh;
-background:#000;
-display:flex;
-align-items:center;
-justify-content:center;
-color: #ffe600;
-overflow:hidden;
-position:relative;
+.auth-page {
+  min-height: 100vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b89b5e;
+  overflow-x: hidden;
+  position: relative;
 }
 
-.auth-page::before{
-content:"";
-position:absolute;
-width:600px;
-height:600px;
-background:#ffe600;
-filter:blur(180px);
-opacity:.25;
-top:-200px;
-left:-200px;
-animation:move1 12s infinite alternate;
+.auth-page::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: #b89b5e;
+  filter: blur(180px);
+  opacity: .25;
+  top: -200px;
+  left: -200px;
+  animation: move1 12s infinite alternate;
+  pointer-events: none;
 }
 
-.auth-page::after{
-content:"";
-position:absolute;
-width:500px;
-height:500px;
-background:#ffe600;
-filter:blur(180px);
-opacity:.2;
-bottom:-200px;
-right:-200px;
-animation:move2 14s infinite alternate;
+.auth-page::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: #b89b5e;
+  filter: blur(180px);
+  opacity: .2;
+  bottom: -200px;
+  right: -200px;
+  animation: move2 14s infinite alternate;
+  pointer-events: none;
 }
 
-@keyframes move1{
-0%{transform:translate(0,0)}
-100%{transform:translate(120px,80px)}
+@keyframes move1 {
+  0% { transform: translate(0, 0) }
+  100% { transform: translate(120px, 80px) }
 }
 
-@keyframes move2{
-0%{transform:translate(0,0)}
-100%{transform:translate(-100px,-60px)}
+@keyframes move2 {
+  0% { transform: translate(0, 0) }
+  100% { transform: translate(-100px, -60px) }
 }
 
-.mainn-wrappper{
-width:1100px;
-display:flex;
-gap:50px;
+.mainn-wrappper {
+  width: 1100px;
+  max-width: 95%;
+  display: flex;
+  gap: 50px;
+  z-index: 2;
 }
 
-.hotel-info-card{
-flex:1;
-padding:40px;
+.hotel-info-card {
+  flex: 1;
+  padding: 40px;
 }
 
-.hotel-info-card h2{
-font-size:30px;
-color:#ffe600;
-margin-bottom:10px;
+.hotel-info-card h2 {
+  font-size: 30px;
+  color: #b89b5e;
+  margin-bottom: 10px;
 }
 
-.hotel-info-card p{
-color:#aaa;
-margin-bottom:30px;
+.hotel-info-card p {
+  color: #aaa;
+  margin-bottom: 30px;
 }
 
-.sub-card{
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(12px);
-padding:20px;
-margin-bottom:20px;
-border-left:3px solid #ffe600;
-transition:.35s;
-transform:translateY(30px);
-opacity:0;
-animation:cardIn .8s forwards;
+.sub-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 3px solid #b89b5e;
+  transition: .35s;
+  transform: translateY(30px);
+  opacity: 0;
+  animation: cardIn .8s forwards;
 }
 
-.sub-card:nth-child(3){animation-delay:.2s;}
-.sub-card:nth-child(4){animation-delay:.4s;}
-.sub-card:nth-child(5){animation-delay:.6s;}
+.sub-card:nth-child(3) { animation-delay: .2s; }
+.sub-card:nth-child(4) { animation-delay: .4s; }
+.sub-child:nth-child(5) { animation-delay: .6s; }
 
-@keyframes cardIn{
-to{
-transform:translateY(0);
-opacity:1;
-}
+@keyframes cardIn {
+  to { transform: translateY(0); opacity: 1; }
 }
 
-.sub-card:hover{
-transform:translateY(-4px);
-background:rgba(255,255,255,0.08);
+.sub-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.sub-card h4{
-color:#ffe600;
-margin-bottom:6px;
+.sub-card h4 {
+  color: #b89b5e;
+  margin-bottom: 6px;
 }
 
-.sub-card p{
-font-size:14px;
-color:#bbb;
+.sub-card p {
+  font-size: 14px;
+  color: #bbb;
 }
 
-
-.form-container{
-flex:1;
-padding:35px;
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(30px);
-border:1px solid rgba(255,255,255,0.08);
-box-shadow:0 20px 60px rgba(0,0,0,0.8);
+.form-container {
+  flex: 1;
+  padding: 35px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
 }
 
-.form-container h3{
-font-size:26px;
-color:#ffe600;
-margin-bottom:5px;
+.form-container h3 {
+  font-size: 26px;
+  color: #b89b5e;
+  margin-bottom: 5px;
 }
 
-.form-container p{
-color:#aaa;
-margin-bottom:20px;
+.form-container p {
+  color: #aaa;
+  margin-bottom: 20px;
 }
 
-#signupForm{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
+#signupForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
-.input-group{
-display:flex;
-flex-direction:column;
+.input-group {
+  display: flex;
+  flex-direction: column;
 }
 
 .input-group:nth-child(7),
 .input-group:nth-child(8),
 .input-group:nth-child(9),
-.input-group:nth-child(10){
-grid-column:span 2;
+.input-group:nth-child(10) {
+  grid-column: span 2;
 }
 
-input{
-padding:10px;
-border:none;
-border-bottom:1px solid rgba(255,255,255,0.2);
-background:transparent;
-color:white;
-outline:none;
-transition:.25s;
+input, select {
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: white !important;
+  outline: none;
+  transition: .25s;
 }
 
-input::placeholder{
-color:#666;
+input::placeholder {
+  color: #666;
 }
 
-input:focus{
-border-bottom:1px solid #ffe600;
-box-shadow:0 6px 8px -6px #ffe600;
-color: #bbb;
+input:focus {
+  border-bottom: 1px solid #b89b5e;
+  box-shadow: 0 6px 8px -6px #b89b5e;
 }
 
-button{
-grid-column:span 2;
-margin-top:10px;
-padding:14px;
-background:#ffe600;
-color:black;
-border:none;
-font-weight:bold;
-cursor:pointer;
-transition:.25s;
+button {
+  grid-column: span 2;
+  margin-top: 10px;
+  padding: 14px;
+  background: #b89b5e;
+  color: black;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .25s;
 }
 
-button:hover{
-transform:scale(1.03);
-box-shadow:0 0 20px #ffe600;
+button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px #b89b5e;
 }
 
+@media (max-width: 600px) {
+  .auth-page {
+    height: auto !important;
+    min-height: 100vh;
+    overflow-y: auto !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 0;
+  }
 
-input[type="number"] {
-    color: #bbb !important;
-    -webkit-text-fill-color: white !important; 
-}
+  .mainn-wrappper {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    gap: 20px;
+    padding: 15px;
+    box-sizing: border-box !important;
+  }
 
-select {
-    color:  #bbb !important;
-    background-color: #222 !important; 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-    appearance: none; 
-    -webkit-appearance: none;
+  .sub-card {
+    display: none !important;
+  }
+
+  .hotel-info-card {
+    width: 100%;
     padding: 10px;
-}
+    text-align: center;
+    box-sizing: border-box;
+  }
 
-select option {
-    background-color: black;
-    color:#bbb ;
+  .hotel-info-card h2 {
+    font-size: 22px;
+  }
+
+  .form-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 25px 20px;
+    margin: 0;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+  }
+
+  #signupForm {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100%;
+    gap: 15px;
+  }
+
+  .input-group {
+    width: 100% !important;
+    grid-column: auto !important;
+  }
+
+  input, select {
+    width: 100% !important;
+    font-size: 16px !important;
+    padding: 12px 5px;
+    box-sizing: border-box;
+  }
+
+  button {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 }
 </style> 
 </head>

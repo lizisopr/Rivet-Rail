@@ -1,22 +1,22 @@
-const inputs = document.querySelectorAll("#signupForm input");
+const signupForm = document.getElementById("signupForm");
+const signupInputs = document.querySelectorAll("#signupForm input, #signupForm select");
 const SIGNUP_URL = "https://api.everrest.educata.dev/auth/sign_up";
-const VERIFY_URL = "https://api.everrest.educata.dev/auth/verify_email";
 
 async function register(event) {
   event.preventDefault();
 
   const credentials = {
-    firstName: inputs[0].value,
-    lastName: inputs[1].value,
-    age: Number(inputs[2].value),
-    email: inputs[3].value,
-    password: inputs[4].value,
-    address: inputs[5].value,
-    phone: inputs[6].value,
-    zipcode: inputs[7].value,
-    avatar: inputs[8].value,
-    gender: inputs[9].value,
-    type: "OTP"
+    firstName: signupInputs[0].value,
+    lastName: signupInputs[1].value,
+    age: Number(signupInputs[2].value),
+    email: signupInputs[3].value,
+    password: signupInputs[4].value,
+    address: signupInputs[5].value,
+    phone: signupInputs[6].value,
+    zipcode: signupInputs[7].value,
+    avatar: signupInputs[8].value,
+    gender: signupInputs[9].value.toUpperCase(),
+    type: "LINK"
   };
 
   try {
@@ -30,8 +30,8 @@ async function register(event) {
 
     if (resp.ok) {
       localStorage.setItem("userEmail", credentials.email);
-      await sendVerificationCode(credentials.email);
-      window.location.href = "verify.html";
+      alert("Verification link sent to your email!");
+      window.location.href = "login.html";
     } else {
       alert(JSON.stringify(answer.errorKeys || answer.message));
     }
@@ -40,16 +40,6 @@ async function register(event) {
   }
 }
 
-async function sendVerificationCode(email) {
-  try {
-    await fetch(VERIFY_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email })
-    });
-  } catch (err) {
-    console.error(err);
-  }
+if (signupForm) {
+  signupForm.addEventListener("submit", register);
 }
-
-document.getElementById("signupForm").addEventListener("submit", register);

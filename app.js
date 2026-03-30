@@ -1,21 +1,17 @@
-const API_URL = "https://6988a45c780e8375a688d0f5.mockapi.io/";
+const URL_API = "https://6988a45c780e8375a688d0f5.mockapi.io/";
 const container = document.querySelector(".roomscontainer");
 const sizeFilter = document.getElementById("sizeFilter");
 const priceFilter = document.getElementById("priceFilter");
+
 let allRooms = [];
 
-function isLoggedIn() {
-  return localStorage.getItem("access_token");
-}
-
-function renderFavButton(roomId, title, image) {
-  if (!isLoggedIn()) return ""; 
-  return `<button class="fav-btn" onclick="addToFavs(${roomId}, '${title}', '${image}')">Add to favs</button>`;
-}
+document.addEventListener("DOMContentLoaded", () => {
+  getRooms();
+});
 
 async function getRooms() {
   try {
-    const res = await fetch(`${API_URL}rooms`);
+    const res = await fetch(`${URL_API}rooms`);
     allRooms = await res.json();
     renderRooms(allRooms);
   } catch (err) {
@@ -24,100 +20,113 @@ async function getRooms() {
 }
 
 function renderRooms(rooms) {
+  if (!container) return;
   container.innerHTML = "";
+
   rooms.forEach(room => {
-    container.innerHTML += `
-      <div class="rom-card">
-        <img src="${room.image}" alt="${room.title}">
-        <div class="restt">
-          <h3 class="card__title">
-            <a href="details.html?id=${room.id}" style="text-decoration:none; color:inherit;">
-              ${room.title}
-            </a>
-          </h3>
-          <p><strong>Size:</strong> ${room.size}m²</p>
-          <p><strong>Price:</strong> $${room.price}</p>
-          <div class="button-group">
-            <button class="boook-btn" onclick="reserveRoom(${room.id})">Reserve Now</button>
-            ${isLoggedIn() ? `<button class="favvvv-btn" onclick="addToFavs(${room.id}, '${room.title}', '${room.image}', '${room.price}', '${room.size}', '${room.description}')">Add to favs</button>` : ""}
-          </div>
+    const card = document.createElement("div");
+    card.className = "rom-card";
+    card.innerHTML = `
+      <img src="${room.image}" alt="${room.title}">
+      <div class="restt">
+        <h3 class="card__title">
+          <a href="details.html?id=${room.id}" style="text-decoration:none; color:inherit;">
+            ${room.title}
+          </a>
+        </h3>
+        <p><strong>Size:</strong> ${room.size}m²</p>
+        <p><strong>Price:</strong> $${room.price}</p>
+        <div class="button-group">
+          <button class="boook-btn">Reserve Now</button>
+          <button class="favvvv-btn">Add to favs</button>
         </div>
       </div>
     `;
+
+    card.querySelector(".boook-btn").addEventListener("click", () => {
+      if (!localStorage.getItem("currentUser")) {
+        window.location.href = "login.html";
+        return;
+      }
+      window.location.href = "reserve.html";
+    });
+
+    card.querySelector(".favvvv-btn").addEventListener("click", () => addToFavs(room));
+
+    container.appendChild(card);
   });
 }
 
-function reserveRoom(roomId) {
-  if (!isLoggedIn()) {
-    alert("Please login first");
-    window.location.href = "login.html";
-    return;
-  }
-  window.location.href = "contact.html";
-}
-
-async function addToFavs(id, title, image, price, size, description) {
-  if (!isLoggedIn()) {
-    alert("Please login first");
-    window.location.href = "login.html";
-    return;
-  }
-
+async function addToFavs(room) {
   try {
-    const res = await fetch(`${API_URL}favs`);
-    const favs = await res.json();
-    const exists = favs.find(fav => String(fav.productId) === String(id));
-    
-    if (exists) {
-      alert("This room is already in your favorites");
+    const email = localStorage.getItem("currentUser");
+
+    if (!email) {
+      window.location.href = "login.html";
       return;
     }
 
-    await fetch(`${API_URL}favs`, {
+    const res = await fetch(`${URL_API}favs`);
+    const favs = await res.json();
+
+    const exists = favs.find(fav =>
+      String(fav.productId) === String(room.id) &&
+      fav.userId === email
+    );
+
+    if (exists) {
+      alert("Already in favorites");
+      return;
+    }
+
+    await fetch(`${URL_API}favs`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify({ 
-        productId: id, 
-        title, 
-        image, 
-        price, 
-        size, 
-        description 
+      body: JSON.stringify({
+        userId: email,
+        productId: room.id,
+        title: room.title,
+        image: room.image,
+        price: room.price,
+        size: room.size,
+        description: room.description || "No description available"
       })
     });
 
     alert("Added to favorites");
+
   } catch (err) {
-    console.error("Error adding to favorites:", err);
+    console.error(err);
   }
 }
 
 function applyFilters() {
-  let filtered = allRooms;
-  const sizeValue = sizeFilter.value;
-  const priceValue = priceFilter.value;
+  let filtered = [...allRooms];
+  const sVal = sizeFilter?.value;
+  const pVal = priceFilter?.value;
 
-  if (sizeValue) {
-    filtered = filtered.filter(room => {
-      const size = parseFloat(room.size);
-      if (sizeValue === "small") return size <= 20;
-      if (sizeValue === "medium") return size > 20 && size <= 40;
-      if (sizeValue === "large") return size > 40;
+  if (sVal) {
+    filtered = filtered.filter(r => {
+      const s = parseFloat(r.size);
+      if (sVal === "small") return s <= 20;
+      if (sVal === "medium") return s > 20 && s <= 40;
+      if (sVal === "large") return s > 40;
+      return true;
     });
   }
 
-  if (priceValue) {
-    filtered = filtered.filter(room => {
-      const price = parseFloat(room.price);
-      if (priceValue === "low") return price < 200;
-      if (priceValue === "mid") return price >= 200 && price <= 300;
-      if (priceValue === "high") return price > 400;
+  if (pVal) {
+    filtered = filtered.filter(r => {
+      const p = parseFloat(r.price);
+      if (pVal === "low") return p < 200;
+      if (pVal === "mid") return p >= 200 && p <= 300;
+      if (pVal === "high") return p > 400;
+      return true;
     });
   }
+
   renderRooms(filtered);
 }
 
-sizeFilter.addEventListener("change", applyFilters);
-priceFilter.addEventListener("change", applyFilters);
-
-getRooms();
+sizeFilter?.addEventListener("change", applyFilters);
+priceFilter?.addEventListener("change", applyFilters);
