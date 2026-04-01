@@ -2282,8 +2282,8 @@ tr {
 
 .item-header h3 {
   font-size: 1.1rem;
-  margin: 0;
-  font-weight: 700;
+  margin: 0 0 8px 0;
+  font-weight: 800;
   color: var(--text-dark);
   font-family: var(--font-secondary);
 }
@@ -2297,9 +2297,9 @@ tr {
 
 .item-descr {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: var(--text-dark) !important;
-  margin: 6px 0 0 0;
+  margin: 15px 0 0 0;
   line-height: 1.5;
   font-family: var(--font-secondary);
   opacity: 1 !important;
@@ -2330,6 +2330,7 @@ tr {
   cursor: pointer;
   text-transform: uppercase;
   transition: all 0.2s;
+  margin: 10px 0 10px auto;
 }
 
 .edit-btn {
