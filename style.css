@@ -3352,6 +3352,20 @@ tr {
     height: 60vh;
   }
 
+  .animate-texti{
+    width: 100%;
+    font-size: 0.20px;
+  }
+
+  .animate-text-delay{
+    width: 100%;
+    font-size: small;
+  }
+
+  .butttttttttttttoni{
+    bottom: 100px;
+  }
+
   .hero-caption {
     width: 90%;
     bottom: 10%;
